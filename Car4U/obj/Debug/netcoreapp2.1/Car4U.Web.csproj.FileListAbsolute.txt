@@ -1,0 +1,8 @@
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U\bin\Debug\netcoreapp2.1\Car4U.ApplicationCore.dll
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U\obj\Debug\netcoreapp2.1\Car4U.Web.csprojAssemblyReference.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U\obj\Debug\netcoreapp2.1\Car4U.Web.csproj.CoreCompileInputs.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U\obj\Debug\netcoreapp2.1\Car4U.Web.RazorAssemblyInfo.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U\obj\Debug\netcoreapp2.1\Car4U.Web.RazorAssemblyInfo.cs
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U\obj\Debug\netcoreapp2.1\Car4U.Web.AssemblyInfoInputs.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U\obj\Debug\netcoreapp2.1\Car4U.Web.AssemblyInfo.cs
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U\obj\Debug\netcoreapp2.1\Car4U.Web.RazorTargetAssemblyInfo.cache

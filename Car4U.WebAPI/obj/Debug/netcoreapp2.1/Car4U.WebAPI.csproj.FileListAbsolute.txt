@@ -1,0 +1,10 @@
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.WebAPI\obj\Debug\netcoreapp2.1\Car4U.WebAPI.csproj.CoreCompileInputs.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.WebAPI\obj\Debug\netcoreapp2.1\Car4U.WebAPI.AssemblyInfoInputs.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.WebAPI\obj\Debug\netcoreapp2.1\Car4U.WebAPI.AssemblyInfo.cs
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.WebAPI\bin\Debug\netcoreapp2.1\Car4U.WebAPI.deps.json
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.WebAPI\bin\Debug\netcoreapp2.1\Car4U.WebAPI.runtimeconfig.json
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.WebAPI\bin\Debug\netcoreapp2.1\Car4U.WebAPI.runtimeconfig.dev.json
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.WebAPI\bin\Debug\netcoreapp2.1\Car4U.WebAPI.dll
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.WebAPI\obj\Debug\netcoreapp2.1\Car4U.WebAPI.RazorAssemblyInfo.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.WebAPI\obj\Debug\netcoreapp2.1\Car4U.WebAPI.RazorAssemblyInfo.cs
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.WebAPI\obj\Debug\netcoreapp2.1\Car4U.WebAPI.RazorTargetAssemblyInfo.cache

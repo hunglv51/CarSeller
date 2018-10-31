@@ -1,0 +1,3 @@
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U\obj\Debug\netcoreapp2.1\Car4U.csproj.CoreCompileInputs.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U\obj\Debug\netcoreapp2.1\Car4U.AssemblyInfoInputs.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U\obj\Debug\netcoreapp2.1\Car4U.AssemblyInfo.cs
