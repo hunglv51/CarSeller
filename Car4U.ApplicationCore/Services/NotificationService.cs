@@ -6,71 +6,76 @@ using Car4U.ApplicationCore.Entities;
 using Car4U.ApplicationCore.Interfaces;
 using System.Linq;
 using Car4U.ApplicationCore.Specifications;
+using Car4U.ApplicationCore.Exceptions;
 
 namespace Car4U.ApplicationCore.Services{
     public class NotificationService : INotificationService
     {
-        private readonly IAsyncRepository<Guid, Notification> _notifificationReporsitory;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IUriComposer _uriComposer;
         private readonly IAppLogger<Notification> _logger;
 
+        
+        public NotificationService(IUnitOfWork unitOfWork, IUriComposer uriComposer, IAppLogger<Notification> logger)
+        {
+            _unitOfWork = unitOfWork;
+            _uriComposer = uriComposer;
+            _logger = logger;
+        }
         public async Task DeleteNotification(Guid id)
         {
-            var notification = await _notifificationReporsitory.GetByIdAsync(id);
-            await _notifificationReporsitory.DeleteAsync(notification);
+            var notification = await GetNotificationAsync(id);
+            await _unitOfWork.NotificationAsyncRepository.DeleteAsync(notification);
+            _logger.LogInfo($"Notification with id {id.ToString()} has been deleted");
         }
 
-        public async Task<IEnumerable<Notification>> GetNewestNotificaitonAsync(Guid? userId, int pageMargin)
+        public async Task<IEnumerable<Notification>> GetNewestNotificationAsync(Guid? userId, int pageMargin)
         {
             IEnumerable<Notification> newestNotification;
             if(userId == null)
             {
-                newestNotification = await _notifificationReporsitory.ListAllAsync();
-                
+                newestNotification = await _unitOfWork.NotificationAsyncRepository.ListAllAsync();
+                _logger.LogInfo($"Get {pageMargin} newest notifications");
             }
             else
             {
                 var notificationFilter = new NotificationFilterSpecification((Guid)userId);
-                newestNotification = await _notifificationReporsitory.ListAsync(notificationFilter);
+                newestNotification = await _unitOfWork.NotificationAsyncRepository.ListAsync(notificationFilter);
+                _logger.LogInfo($"Get {pageMargin} newest notifications of userid {userId.ToString()}");
             }
             return newestNotification.Take(pageMargin);
         }
 
-        public Task<ICollection<Notification>> GetNewestNotificaitonAsync(Guid userId, int? pageMargin)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public async Task<Notification> GetNotificationAsync(Guid id)
         {
-            return await _notifificationReporsitory.GetByIdAsync(id);
-            
+             var notification = await _unitOfWork.NotificationAsyncRepository.GetByIdAsync(id);
+            if(notification == null)
+            {
+                _logger.LogError($"Notification with id {id.ToString()} does not exist");
+                throw new NotificationNotFoundException(id);
+            }
+            return notification;
         }
 
-        public Task MarkNotificationAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public async Task MarkReadNotificationAsync(Guid id)
+
+
+        public async Task MarkNotificationAsync(Guid id)
         {
-            var notification = await _notifificationReporsitory.GetByIdAsync(id);
+            var notification = await _unitOfWork.NotificationAsyncRepository.GetByIdAsync(id);
             notification.IsRead = true;
-            await _notifificationReporsitory.UpdateAsync(notification);
+            await _unitOfWork.NotificationAsyncRepository.UpdateAsync(notification);
         }
 
-        public async Task MarkNotificaitonAsync(Guid id)
+        public async Task UnmarkNotificationAsync(Guid id)
         {
-            var notification = await _notifificationReporsitory.GetByIdAsync(id);
-            notification.IsRead = true;
-            await _notifificationReporsitory.UpdateAsync(notification);
-        }
-
-        public async Task UnmarkNotificaitonAsync(Guid id)
-        {
-            var notification = await _notifificationReporsitory.GetByIdAsync(id);
+            var notification = await _unitOfWork.NotificationAsyncRepository.GetByIdAsync(id);
             notification.IsRead = false;
-            await _notifificationReporsitory.UpdateAsync(notification);
+            await _unitOfWork.NotificationAsyncRepository.UpdateAsync(notification);
         }
+
+       
     }
 }

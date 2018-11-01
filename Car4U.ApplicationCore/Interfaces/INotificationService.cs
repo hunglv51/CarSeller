@@ -7,10 +7,10 @@ using Car4U.ApplicationCore.Entities;
 namespace Car4U.ApplicationCore.Interfaces{
     public interface INotificationService
     {
-        Task<ICollection<Notification>> GetNewestNotificaitonAsync(Guid userId, int? pageMargin);
+        Task<IEnumerable<Notification>> GetNewestNotificationAsync(Guid? userId, int pageMargin);
         Task<Notification> GetNotificationAsync(Guid id);
         Task MarkNotificationAsync(Guid id);
-        Task UnmarkNotificaitonAsync(Guid id);
+        Task UnmarkNotificationAsync(Guid id);
         Task DeleteNotification(Guid id);
     }
 }

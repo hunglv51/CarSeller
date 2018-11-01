@@ -23,7 +23,7 @@ namespace Car4U.ApplicationCore.Entities
         }
         
 
-        public Guid UserId { get; set; }
+        public AppUser User { get; set; }
 
         [StringLength(50)]
         public string Title { get; set; }

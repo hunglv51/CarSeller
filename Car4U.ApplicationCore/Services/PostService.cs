@@ -1,42 +1,70 @@
-
-
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Car4U.ApplicationCore.Entities;
+using Car4U.ApplicationCore.Exceptions;
 using Car4U.ApplicationCore.Interfaces;
+using Car4U.ApplicationCore.Specifications;
 
 namespace Car4U.ApplicationCore.Services{
     public class PostService : IPostService
     {
-        public Task CheckExpiredPostAsync(Guid id)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUriComposer _uriComposer;
+        private readonly IAppLogger<Post> _logger;
+        public async Task<bool> IsExpiredPostAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var post = await GetPostAsync(id);
+            return DateTime.Now.CompareTo(post.ExpiredDate) == 1;
         }
 
-        public Task<Post> CreatePostAsync(Guid id, Car car, ICollection<CarImage> images)
+        public async Task<Post> CreatePostAsync(Post post)
         {
-            throw new NotImplementedException();
+            return await _unitOfWork.PostAsyncRepository.AddAsync(post);
         }
 
-        public Task DeletePostAsync(Guid id)
+        public async Task DeletePostAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var post = await GetPostAsync(id);
+            await _unitOfWork.PostAsyncRepository.DeleteAsync(post);
         }
 
-        public Task<ICollection<Post>> GetNewestPostsAsync(Guid userId, int? pageMargin)
+        public async Task<IEnumerable<Post>> GetNewestPostsAsync(Guid? userId, int pageMargin)
         {
-            throw new NotImplementedException();
+             IEnumerable<Post> newestPosts;
+            if(userId == null)
+            {
+                newestPosts = await _unitOfWork.PostAsyncRepository.ListAllAsync();
+                _logger.LogInfo($"Get {pageMargin} newest Posts");
+            }
+            else
+            {
+                var postFilter = new PostFilterSpecification((Guid)userId);
+                newestPosts = await _unitOfWork.PostAsyncRepository.ListAsync(postFilter);
+                _logger.LogInfo($"Get {pageMargin} newest Posts of userid {userId.ToString()}");
+            }
+            return newestPosts.Take(pageMargin);
         }
 
-        public Task<Post> GetPostAsync(Guid id)
+        public async Task<Post> GetPostAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var post = await _unitOfWork.PostAsyncRepository.GetByIdAsync(id);
+            if(post == null)
+            {
+                _logger.LogError($"Post id {id.ToString()} does not exist");
+                throw new PostNotFoundException(id);
+            }
+            return post;
         }
 
-        public Task RenewPostAsync(Guid id)
+        public async Task RenewPostAsync(Guid id, DateTime newExpiredDate)
         {
-            throw new NotImplementedException();
+            var post = await GetPostAsync(id);
+            post.ExpiredDate = newExpiredDate;
+            await _unitOfWork.PostAsyncRepository.UpdateAsync(post);
+
+
         }
     }
 }

@@ -8,12 +8,12 @@ namespace Car4U.ApplicationCore.Interfaces
 {
     public interface IPostService
     {
-        Task<ICollection<Post>> GetNewestPostsAsync(Guid userId, int? pageMargin);
+        Task<IEnumerable<Post>> GetNewestPostsAsync(Guid? userId, int pageMargin);
         Task<Post> GetPostAsync(Guid id);
         Task DeletePostAsync(Guid id);
-        Task CheckExpiredPostAsync(Guid id);
-        Task RenewPostAsync(Guid id);
-        Task<Post> CreatePostAsync(Guid id, Car car, ICollection<CarImage> images);
+        Task<bool> IsExpiredPostAsync(Guid id);
+        Task RenewPostAsync(Guid id,DateTime newExpiredDate);
+        Task<Post> CreatePostAsync(Post post);
          
         
     }
