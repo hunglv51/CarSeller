@@ -14,7 +14,17 @@ namespace Car4U.Infrastructure.Data
             throw new NotImplementedException();
         }
 
+        public Task<TVal> AddAsync(TVal entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(TVal entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(TVal entity)
         {
             throw new NotImplementedException();
         }
@@ -64,17 +74,7 @@ namespace Car4U.Infrastructure.Data
             throw new NotImplementedException();
         }
 
-        Task<TVal> IAsyncRepository<TKey, TVal>.Add(TVal entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task IAsyncRepository<TKey, TVal>.Delete(TVal entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task IAsyncRepository<TKey, TVal>.Update(TVal entity)
+        public Task UpdateAsync(TVal entity)
         {
             throw new NotImplementedException();
         }

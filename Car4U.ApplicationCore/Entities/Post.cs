@@ -22,6 +22,9 @@ namespace Car4U.ApplicationCore.Entities
             CreatedDate = ModifiedDate = DateTime.Now;
         }
         
+
+        public Guid UserId { get; set; }
+
         [StringLength(50)]
         public string Title { get; set; }
         [StringLength(1000)]

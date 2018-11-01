@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Car4U.ApplicationCore.Entities;
 
 namespace Car4U.ApplicationCore.Interfaces
 {
-    public interface IPostRepository<Guid, Post>: IRepository<Guid, BaseEntity<Guid>> , IAsyncRepository<Guid, BaseEntity<Guid>>
+    public interface IPostRepository : IRepository<Guid, Post> , IAsyncRepository<Guid, Post>
     {
-        
+        Post GetByIdWithDetails(Guid id);
+        Task<Post> GetByIdWithDetailsAsync(Guid id);
     }
 }
