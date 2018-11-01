@@ -1,82 +1,97 @@
 ﻿using Car4U.ApplicationCore.Entities;
 using Car4U.ApplicationCore.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Car4U.Infrastructure.Data
+namespace Car4U.Infrastructure.Data.Repositories
 {
     class BaseRepository<TKey, TVal> : IRepository<TKey, TVal>, IAsyncRepository<TKey,TVal> where TVal : BaseEntity<TKey>
     {
-        public TVal Add(TVal entity)
+        private readonly CarSellerContext _context;
+        private DbSet<TVal> _dbSet => _context.Set<TVal>();
+        public  IQueryable<TVal> _entities => _dbSet.AsQueryable();
+        public BaseRepository(CarSellerContext context)
+        {
+            _context = context;
+        }
+        public virtual void Add(TVal entity)
+        {
+            _entities.Append(entity);
+        }
+
+        public virtual async Task AddAsync(TVal entity)
+        {
+            _entities.Append(entity);
+        }
+
+        public virtual void Delete(TVal entity)
+        {
+            _entities.
+        }
+
+        public virtual Task DeleteAsync(TVal entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TVal> AddAsync(TVal entity)
+        public virtual TVal GetById(TKey id) => _context.Set<TVal>().Find(id);
+
+        public virtual async Task<TVal> GetByIdAsync(TKey id)
         {
-            throw new NotImplementedException();
+            return await _context.Set<TVal>().FindAsync(id);
         }
 
-        public void Delete(TVal entity)
+        public virtual TVal GetSingleBySpec(ISpecification<TVal> spec)
         {
-            throw new NotImplementedException();
+            return List(spec).FirstOrDefault();
         }
 
-        public Task DeleteAsync(TVal entity)
+        public virtual async Task<TVal> GetSingleBySpecAsync(ISpecification<TVal> spec)
         {
-            throw new NotImplementedException();
+            return (await ListAsync(spec)).FirstOrDefault();
         }
 
-        public TVal GetById(TKey id)
+        public virtual IEnumerable<TVal> List(ISpecification<TVal> spec)
         {
-            throw new NotImplementedException();
+            var queryableResultWithIncludes = spec.Includes
+            .Aggregate(_context.Set<TVal>().AsQueryable(), (current, include) => current.Include(include));
+            
+            var resultIncludeStrings = queryableResultWithIncludes.Where(spec.Criterial).AsEnumerable();
+            return resultIncludeStrings;
         }
 
-        public Task<TVal> GetByIdAsync(TKey id)
+        public virtual IEnumerable<TVal> ListAll()
         {
-            throw new NotImplementedException();
+            return _context.Set<TVal>().AsEnumerable();
         }
 
-        public TVal GetSingleBySpec(ISpecification<TVal> spec)
+        public virtual async Task<IEnumerable<TVal>> ListAllAsync()
         {
-            throw new NotImplementedException();
+            return (await _context.Set<TVal>().ToListAsync());
         }
 
-        public Task<TVal> GetSingleBySpecAsync(ISpecification<TVal> spec)
+        public virtual async Task<IEnumerable<TVal>> ListAsync(ISpecification<TVal> spec)
         {
-            throw new NotImplementedException();
+            var queryableResultWithIncludes = spec.Includes
+            .Aggregate(_context.Set<TVal>().AsQueryable(), (current, include) => current.Include(include));
+            
+            var resultIncludeStrings = await queryableResultWithIncludes.Where(spec.Criterial).ToListAsync();
+            return  resultIncludeStrings;
         }
 
-        public IEnumerable<TVal> List(ISpecification<TVal> spec)
+        public virtual void Update(TVal entity)
         {
-            throw new NotImplementedException();
+            _context.Set<TVal>().Update(entity);
+
         }
 
-        public IEnumerable<TVal> ListAll()
+        public virtual async Task UpdateAsync(TVal entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<TVal>> ListAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<TVal>> ListAsync(ISpecification<TVal> spec)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(TVal entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateAsync(TVal entity)
-        {
-            throw new NotImplementedException();
+            _context.Set<TVal>().Update(entity);
         }
     }
 }

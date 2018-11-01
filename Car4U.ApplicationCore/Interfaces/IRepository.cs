@@ -11,7 +11,7 @@ namespace Car4U.ApplicationCore.Interfaces
         TVal GetSingleBySpec(ISpecification<TVal> spec);
         IEnumerable<TVal> ListAll();
         IEnumerable<TVal> List(ISpecification<TVal> spec);
-        TVal Add(TVal entity);
+        void Add(TVal entity);
         void Update(TVal entity);
         void Delete(TVal entity);
     }

@@ -8,11 +8,12 @@ namespace Car4U.Infrastructure.Data
 {
     public class CarSellerContext : DbContext
     {
+      
+
         public CarSellerContext(DbContextOptions<CarSellerContext> options) : base(options)
         {
 
         }
-
         public DbSet<Post> Posts { get; set; }
         public DbSet<CarImage> CarImages { get; set; }
         public DbSet<Car> Cars { get; set; }

@@ -21,7 +21,8 @@ namespace Car4U.ApplicationCore.Services{
 
         public async Task<Post> CreatePostAsync(Post post)
         {
-            return await _unitOfWork.PostAsyncRepository.AddAsync(post);
+            await _unitOfWork.PostAsyncRepository.AddAsync(post);
+            return post;
         }
 
         public async Task DeletePostAsync(Guid id)
