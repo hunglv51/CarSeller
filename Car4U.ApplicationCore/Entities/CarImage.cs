@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Car4U.ApplicationCore.Entities
 {
@@ -14,8 +15,10 @@ namespace Car4U.ApplicationCore.Entities
             Width = width;
             Height = height;
         }
-
+        public Car Car { get; set; }
+        [DataType(DataType.Url)]
         public string Uri { get; set; }
+        
         public int Width { get; set; }
         public int Height { get; set; }
     }
