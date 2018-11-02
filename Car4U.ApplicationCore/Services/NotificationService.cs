@@ -25,7 +25,8 @@ namespace Car4U.ApplicationCore.Services{
         public async Task DeleteNotification(Guid id)
         {
             var notification = await GetNotificationAsync(id);
-            await _unitOfWork.NotificationAsyncRepository.DeleteAsync(notification);
+            _unitOfWork.NotificationAsyncRepository.Delete(notification);
+            await _unitOfWork.CommitAsync();
             _logger.LogInfo($"Notification with id {id.ToString()} has been deleted");
         }
 
@@ -66,14 +67,16 @@ namespace Car4U.ApplicationCore.Services{
         {
             var notification = await _unitOfWork.NotificationAsyncRepository.GetByIdAsync(id);
             notification.IsRead = true;
-            await _unitOfWork.NotificationAsyncRepository.UpdateAsync(notification);
+            _unitOfWork.NotificationAsyncRepository.Update(notification);
+            await _unitOfWork.CommitAsync();
         }
 
         public async Task UnmarkNotificationAsync(Guid id)
         {
             var notification = await _unitOfWork.NotificationAsyncRepository.GetByIdAsync(id);
             notification.IsRead = false;
-            await _unitOfWork.NotificationAsyncRepository.UpdateAsync(notification);
+            _unitOfWork.NotificationAsyncRepository.Update(notification);
+            await _unitOfWork.CommitAsync();
         }
 
        

@@ -1,6 +1,9 @@
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Car4U.ApplicationCore.Entities;
 using Car4U.ApplicationCore.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Car4U.Infrastructure.Data.Repositories
 {
@@ -15,25 +18,33 @@ namespace Car4U.Infrastructure.Data.Repositories
         
         public IAsyncRepository<Guid, Notification> NotificationAsyncRepository{get;}
 
-        public IRepository<Guid, Notification> NotificationRepository => throw new NotImplementedException();
+        public IAsyncRepository<Guid, Post> PostAsyncRepository {get;}
 
-        public IAsyncRepository<Guid, Post> PostAsyncRepository => throw new NotImplementedException();
-
-        public IRepository<Guid, Post> PostRepository => throw new NotImplementedException();
-
-        public void Commit()
+     
+        public async Task CommitAsync()
         {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync();
         }
 
         public void Rollback()
         {
-            throw new NotImplementedException();
+            foreach(var entity in _context.ChangeTracker.Entries().Where(x => x.State != EntityState.Unchanged))
+            {
+                switch(entity.State){
+                    case EntityState.Added:
+                        entity.State = EntityState.Detached;
+                        break;
+                    case EntityState.Deleted:    
+                    case EntityState.Modified:
+                        entity.Reload();
+                    break;
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }

@@ -29,6 +29,7 @@ namespace Car4U.ApplicationCore.Entities
         public bool ForAdmin { get; set; }
         public bool IsRead { get; set; }
 
+        public Post Post { get; set; }
         public AppUser User { get; set; }
     }
 }

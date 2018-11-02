@@ -50,5 +50,7 @@ namespace Car4U.ApplicationCore.Entities
         public int? MaxSeatingCapacity { get; set; }
         public int? NumDoor { get; set; }
         public ICollection<CarImage> Images { get; set; }
+        public Post Post { get; set; }
+
     }
 }

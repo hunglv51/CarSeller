@@ -6,9 +6,7 @@ using Car4U.ApplicationCore.Entities;
 
 namespace Car4U.ApplicationCore.Interfaces
 {
-    public interface IPostRepository : IRepository<Guid, Post> , IAsyncRepository<Guid, Post>
+    public interface IPostRepository :IAsyncRepository<Guid, Post>
     {
-        Post GetByIdWithDetails(Guid id);
-        Task<Post> GetByIdWithDetailsAsync(Guid id);
     }
 }

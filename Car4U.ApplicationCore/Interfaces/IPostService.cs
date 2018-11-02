@@ -13,7 +13,7 @@ namespace Car4U.ApplicationCore.Interfaces
         Task DeletePostAsync(Guid id);
         Task<bool> IsExpiredPostAsync(Guid id);
         Task RenewPostAsync(Guid id,DateTime newExpiredDate);
-        Task<Post> CreatePostAsync(Post post);
+        Task CreatePostAsync(Post post);
          
         
     }

@@ -12,9 +12,9 @@ namespace Car4U.ApplicationCore.Interfaces
         Task<TVal> GetSingleBySpecAsync(ISpecification<TVal> spec);
         Task<IEnumerable<TVal>> ListAllAsync();
         Task<IEnumerable<TVal>> ListAsync(ISpecification<TVal> spec);
-        Task AddAsync(TVal entity);
-        Task UpdateAsync(TVal entity);
-        Task DeleteAsync(TVal entity);
+        void Add(TVal entity);
+        void Update(TVal entity);
+        void Delete(TVal entity);
         
     }
 }

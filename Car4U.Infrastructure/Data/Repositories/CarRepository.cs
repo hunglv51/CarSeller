@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Car4U.ApplicationCore.Entities;
 
 namespace Car4U.Infrastructure.Data.Repositories
 {
-    class CarRepository
+    public class CarRepository : BaseRepository<long,Car>
     {
+        public CarRepository(CarSellerContext context) : base(context)
+        {
+            
+        }
     }
 }

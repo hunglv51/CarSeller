@@ -19,16 +19,18 @@ namespace Car4U.ApplicationCore.Services{
             return DateTime.Now.CompareTo(post.ExpiredDate) == 1;
         }
 
-        public async Task<Post> CreatePostAsync(Post post)
+        public async Task CreatePostAsync(Post post)
         {
-            await _unitOfWork.PostAsyncRepository.AddAsync(post);
-            return post;
+            _unitOfWork.PostAsyncRepository.Add(post);
+            await _unitOfWork.CommitAsync();
+            
         }
 
         public async Task DeletePostAsync(Guid id)
         {
             var post = await GetPostAsync(id);
-            await _unitOfWork.PostAsyncRepository.DeleteAsync(post);
+            _unitOfWork.PostAsyncRepository.Delete(post);
+            await _unitOfWork.CommitAsync();
         }
 
         public async Task<IEnumerable<Post>> GetNewestPostsAsync(Guid? userId, int pageMargin)
@@ -63,8 +65,8 @@ namespace Car4U.ApplicationCore.Services{
         {
             var post = await GetPostAsync(id);
             post.ExpiredDate = newExpiredDate;
-            await _unitOfWork.PostAsyncRepository.UpdateAsync(post);
-
+            _unitOfWork.PostAsyncRepository.Update(post);
+            await _unitOfWork.CommitAsync();
 
         }
     }
