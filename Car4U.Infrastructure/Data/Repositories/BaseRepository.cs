@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Car4U.Infrastructure.Data.Repositories
 {
-    public abstract class BaseRepository<TKey, TVal> : IAsyncRepository<TKey,TVal> where TVal : BaseEntity<TKey>
+    public abstract class BaseRepository<TKey, TVal> : IRepository<TKey,TVal> where TVal : BaseEntity<TKey>
     {
         private readonly CarSellerContext _context;
         private DbSet<TVal> _dbSet => _context.Set<TVal>();
@@ -38,7 +38,7 @@ namespace Car4U.Infrastructure.Data.Repositories
 
         // public virtual TVal GetById(TKey id) => _context.Set<TVal>().Find(id);
 
-        public virtual async Task<TVal> GetByIdAsync(TKey id)
+        public virtual async Task<TVal> GetById(TKey id)
         {
             return await _context.Set<TVal>().FindAsync(id);
         }
@@ -48,9 +48,9 @@ namespace Car4U.Infrastructure.Data.Repositories
         //     return List(spec).FirstOrDefault();
         // }
 
-        public virtual async Task<TVal> GetSingleBySpecAsync(ISpecification<TVal> spec)
+        public virtual async Task<TVal> GetSingleBySpec(ISpecification<TVal> spec)
         {
-            return (await ListAsync(spec)).FirstOrDefault();
+            return (await List(spec).ToListAsync()).FirstOrDefault();
         }
 
         // public virtual IEnumerable<TVal> List(ISpecification<TVal> spec)
@@ -67,18 +67,17 @@ namespace Car4U.Infrastructure.Data.Repositories
         //     return _context.Set<TVal>().AsEnumerable();
         // }
 
-        public virtual async Task<IEnumerable<TVal>> ListAllAsync()
+        public virtual IQueryable<TVal> ListAll()
         {
-            return (await _context.Set<TVal>().ToListAsync());
+          return _context.Set<TVal>();
         }
 
-        public virtual async Task<IEnumerable<TVal>> ListAsync(ISpecification<TVal> spec)
+        public IQueryable<TVal> List(ISpecification<TVal> spec)
         {
             var queryableResultWithIncludes = spec.Includes
             .Aggregate(_context.Set<TVal>().AsQueryable(), (current, include) => current.Include(include));
             
-            var resultIncludeStrings = await queryableResultWithIncludes.Where(spec.Criterial).ToListAsync();
-            return  resultIncludeStrings;
+            return queryableResultWithIncludes.Where(spec.Criterial);
         }
 
         public virtual void Update(TVal entity)
@@ -87,6 +86,6 @@ namespace Car4U.Infrastructure.Data.Repositories
 
         }
 
-      
+       
     }
 }

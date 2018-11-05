@@ -8,7 +8,7 @@ namespace Car4U.ApplicationCore.Interfaces
 {
     public interface IPostService
     {
-        Task<IEnumerable<Post>> GetNewestPostsAsync(Guid? userId, int pageMargin);
+        Task<IEnumerable<Post>> GetNewestPostsAsync(Guid? userId, int pageMargin, int pageIndex);
         Task<Post> GetPostAsync(Guid id);
         Task DeletePostAsync(Guid id);
         Task<bool> IsExpiredPostAsync(Guid id);

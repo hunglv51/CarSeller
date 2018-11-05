@@ -6,6 +6,7 @@ using Car4U.ApplicationCore.Entities;
 using Car4U.ApplicationCore.Exceptions;
 using Car4U.ApplicationCore.Interfaces;
 using Car4U.ApplicationCore.Specifications;
+using Microsoft.EntityFrameworkCore;
 
 namespace Car4U.ApplicationCore.Services{
     public class PostService : IPostService
@@ -13,6 +14,13 @@ namespace Car4U.ApplicationCore.Services{
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUriComposer _uriComposer;
         private readonly IAppLogger<Post> _logger;
+        private readonly IPostRepository _postRepository;
+        public PostService(IUnitOfWork uow, IAppLogger<Post> logger, IPostRepository postRepository)
+        {
+            _unitOfWork = uow;
+            _logger = logger;
+            _postRepository  = postRepository;
+        }
         public async Task<bool> IsExpiredPostAsync(Guid id)
         {
             var post = await GetPostAsync(id);
@@ -21,7 +29,7 @@ namespace Car4U.ApplicationCore.Services{
 
         public async Task CreatePostAsync(Post post)
         {
-            _unitOfWork.PostAsyncRepository.Add(post);
+            _postRepository.Add(post);
             await _unitOfWork.CommitAsync();
             
         }
@@ -29,30 +37,30 @@ namespace Car4U.ApplicationCore.Services{
         public async Task DeletePostAsync(Guid id)
         {
             var post = await GetPostAsync(id);
-            _unitOfWork.PostAsyncRepository.Delete(post);
+            _postRepository.Delete(post);
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task<IEnumerable<Post>> GetNewestPostsAsync(Guid? userId, int pageMargin)
+        public async Task<IEnumerable<Post>> GetNewestPostsAsync(Guid? userId, int pageMargin, int pageIndex)
         {
-             IEnumerable<Post> newestPosts;
+             IQueryable<Post> newestPosts;
             if(userId == null)
             {
-                newestPosts = await _unitOfWork.PostAsyncRepository.ListAllAsync();
+                newestPosts = _postRepository.ListAll();
                 _logger.LogInfo($"Get {pageMargin} newest Posts");
             }
             else
             {
                 var postFilter = new PostFilterSpecification((Guid)userId);
-                newestPosts = await _unitOfWork.PostAsyncRepository.ListAsync(postFilter);
+                newestPosts = _postRepository.List(postFilter);
                 _logger.LogInfo($"Get {pageMargin} newest Posts of userid {userId.ToString()}");
             }
-            return newestPosts.Take(pageMargin);
+            return (await newestPosts.OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageMargin).Take(pageMargin).ToListAsync());
         }
 
         public async Task<Post> GetPostAsync(Guid id)
         {
-            var post = await _unitOfWork.PostAsyncRepository.GetByIdAsync(id);
+            var post = await _postRepository.GetById(id);
             if(post == null)
             {
                 _logger.LogError($"Post id {id.ToString()} does not exist");
@@ -65,7 +73,7 @@ namespace Car4U.ApplicationCore.Services{
         {
             var post = await GetPostAsync(id);
             post.ExpiredDate = newExpiredDate;
-            _unitOfWork.PostAsyncRepository.Update(post);
+            _postRepository.Update(post);
             await _unitOfWork.CommitAsync();
 
         }

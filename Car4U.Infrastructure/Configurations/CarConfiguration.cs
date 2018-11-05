@@ -8,7 +8,7 @@ namespace Car4U.Infrastructure.Configurations
     {
         public override void Configure(EntityTypeBuilder<Car> entity)
         {
-            
+            entity.HasOne(c => c.Post).WithOne(p => p.Car);
         }
     }
 }

@@ -16,10 +16,7 @@ namespace Car4U.Infrastructure.Data.Repositories
 
         private readonly CarSellerContext _context;
         
-        public IAsyncRepository<Guid, Notification> NotificationAsyncRepository{get;}
-
-        public IAsyncRepository<Guid, Post> PostAsyncRepository {get;}
-
+  
      
         public async Task CommitAsync()
         {

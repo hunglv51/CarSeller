@@ -7,6 +7,7 @@ using Car4U.ApplicationCore.Interfaces;
 using System.Linq;
 using Car4U.ApplicationCore.Specifications;
 using Car4U.ApplicationCore.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Car4U.ApplicationCore.Services{
     public class NotificationService : INotificationService
@@ -14,44 +15,44 @@ namespace Car4U.ApplicationCore.Services{
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUriComposer _uriComposer;
         private readonly IAppLogger<Notification> _logger;
-
+        private readonly INotificationRepository _notificationRepository;
         
-        public NotificationService(IUnitOfWork unitOfWork, IUriComposer uriComposer, IAppLogger<Notification> logger)
+        public NotificationService(IUnitOfWork unitOfWork, IAppLogger<Notification> logger, INotificationRepository notificationRepository)
         {
             _unitOfWork = unitOfWork;
-            _uriComposer = uriComposer;
             _logger = logger;
+            _notificationRepository = notificationRepository;
         }
         public async Task DeleteNotification(Guid id)
         {
             var notification = await GetNotificationAsync(id);
-            _unitOfWork.NotificationAsyncRepository.Delete(notification);
+            _notificationRepository.Delete(notification);
             await _unitOfWork.CommitAsync();
             _logger.LogInfo($"Notification with id {id.ToString()} has been deleted");
         }
 
-        public async Task<IEnumerable<Notification>> GetNewestNotificationAsync(Guid? userId, int pageMargin)
+        public async Task<IEnumerable<Notification>> GetNewestNotificationAsync(Guid? userId, int pageMargin = 10, int pageIndex = 1)
         {
-            IEnumerable<Notification> newestNotification;
+            IQueryable<Notification> newestNotification;
             if(userId == null)
             {
-                newestNotification = await _unitOfWork.NotificationAsyncRepository.ListAllAsync();
+                newestNotification =  _notificationRepository.ListAll();
                 _logger.LogInfo($"Get {pageMargin} newest notifications");
             }
             else
             {
                 var notificationFilter = new NotificationFilterSpecification((Guid)userId);
-                newestNotification = await _unitOfWork.NotificationAsyncRepository.ListAsync(notificationFilter);
+                newestNotification =  _notificationRepository.List(notificationFilter);
                 _logger.LogInfo($"Get {pageMargin} newest notifications of userid {userId.ToString()}");
             }
-            return newestNotification.Take(pageMargin);
+            return (await newestNotification.OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageMargin).Take(pageMargin).ToListAsync());
         }
 
-      
+       
 
         public async Task<Notification> GetNotificationAsync(Guid id)
         {
-             var notification = await _unitOfWork.NotificationAsyncRepository.GetByIdAsync(id);
+             var notification = await _notificationRepository.GetById(id);
             if(notification == null)
             {
                 _logger.LogError($"Notification with id {id.ToString()} does not exist");
@@ -65,17 +66,17 @@ namespace Car4U.ApplicationCore.Services{
 
         public async Task MarkNotificationAsync(Guid id)
         {
-            var notification = await _unitOfWork.NotificationAsyncRepository.GetByIdAsync(id);
+            var notification = await _notificationRepository.GetById(id);
             notification.IsRead = true;
-            _unitOfWork.NotificationAsyncRepository.Update(notification);
+            _notificationRepository.Update(notification);
             await _unitOfWork.CommitAsync();
         }
 
         public async Task UnmarkNotificationAsync(Guid id)
         {
-            var notification = await _unitOfWork.NotificationAsyncRepository.GetByIdAsync(id);
+            var notification = await _notificationRepository.GetById(id);
             notification.IsRead = false;
-            _unitOfWork.NotificationAsyncRepository.Update(notification);
+            _notificationRepository.Update(notification);
             await _unitOfWork.CommitAsync();
         }
 
