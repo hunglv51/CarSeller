@@ -18,6 +18,8 @@ namespace Car4U.WebAPI.Services
             _notificationRepository = repository;
         }
 
+        public Task<NewestNotificationViewModel> NewestNotification => throw new NotImplementedException();
+
         public Task<NewestNotificationViewModel> GetNewestNotification()
         {
             throw new NotImplementedException();

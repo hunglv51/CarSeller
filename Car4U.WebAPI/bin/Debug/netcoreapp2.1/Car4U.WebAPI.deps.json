@@ -506,7 +506,9 @@
       },
       "Car4U.Infrastructure/1.0.0": {
         "dependencies": {
-          "Car4U.ApplicationCore": "1.0.0"
+          "Car4U.ApplicationCore": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "2.1.4",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "2.1.2"
         },
         "runtime": {
           "Car4U.Infrastructure.dll": {}

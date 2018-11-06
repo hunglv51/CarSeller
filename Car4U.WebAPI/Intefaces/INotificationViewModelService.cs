@@ -5,6 +5,6 @@ namespace Car4U.WebAPI.Intefaces
 {
     public interface INotificationViewModelService
     {
-         Task<NewestNotificationViewModel> GetNewestNotification();
+        Task<NewestNotificationViewModel> NewestNotification { get; }
     }
 }

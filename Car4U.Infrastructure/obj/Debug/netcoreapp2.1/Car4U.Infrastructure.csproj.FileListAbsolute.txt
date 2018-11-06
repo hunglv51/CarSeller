@@ -1,6 +1,5 @@
 C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\bin\Debug\netcoreapp2.1\Car4U.Infrastructure.deps.json
 C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\bin\Debug\netcoreapp2.1\Car4U.Infrastructure.dll
-C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\bin\Debug\netcoreapp2.1\Car4U.Infrastructure.pdb
 C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\bin\Debug\netcoreapp2.1\Car4U.ApplicationCore.dll
 C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\bin\Debug\netcoreapp2.1\Car4U.ApplicationCore.pdb
 C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\obj\Debug\netcoreapp2.1\Car4U.Infrastructure.csprojAssemblyReference.cache
@@ -8,5 +7,6 @@ C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\obj\Debug\netcorea
 C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\obj\Debug\netcoreapp2.1\Car4U.Infrastructure.AssemblyInfoInputs.cache
 C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\obj\Debug\netcoreapp2.1\Car4U.Infrastructure.AssemblyInfo.cs
 C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\obj\Debug\netcoreapp2.1\Car4U.Infrastructure.csproj.CopyComplete
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\bin\Debug\netcoreapp2.1\Car4U.Infrastructure.pdb
 C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\obj\Debug\netcoreapp2.1\Car4U.Infrastructure.dll
 C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Infrastructure\obj\Debug\netcoreapp2.1\Car4U.Infrastructure.pdb

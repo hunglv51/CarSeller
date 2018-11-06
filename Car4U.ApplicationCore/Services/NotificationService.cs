@@ -14,10 +14,10 @@ namespace Car4U.ApplicationCore.Services{
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUriComposer _uriComposer;
-        private readonly IAppLogger<Notification> _logger;
+        private readonly IAppLogger<NotificationService> _logger;
         private readonly INotificationRepository _notificationRepository;
         
-        public NotificationService(IUnitOfWork unitOfWork, IAppLogger<Notification> logger, INotificationRepository notificationRepository)
+        public NotificationService(IUnitOfWork unitOfWork, IAppLogger<NotificationService> logger, INotificationRepository notificationRepository)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
@@ -80,6 +80,12 @@ namespace Car4U.ApplicationCore.Services{
             await _unitOfWork.CommitAsync();
         }
 
+        public async Task CreateNotification(Notification notification)
+        {
+            _notificationRepository.Add(notification);
+            await _unitOfWork.CommitAsync();
+            
+        }
        
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Car4U.ApplicationCore.Entities
@@ -50,6 +51,7 @@ namespace Car4U.ApplicationCore.Entities
         public int? MaxSeatingCapacity { get; set; }
         public int? NumDoor { get; set; }
         public ICollection<CarImage> Images { get; set; }
+        [ForeignKey("PostId")]
         public Post Post { get; set; }
 
     }
