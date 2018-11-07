@@ -82,7 +82,7 @@ namespace Car4U.ApplicationCore.Services{
 
         public async Task CreateNotification(Notification notification)
         {
-            _notificationRepository.Add(notification);
+            await _notificationRepository.Add(notification);
             await _unitOfWork.CommitAsync();
             
         }

@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Car4U/Car4U.Web.csproj"
+                "${workspaceFolder}/Car4U.WebAPI/Car4U.WebAPI.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

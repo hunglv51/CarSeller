@@ -13,9 +13,9 @@ namespace Car4U.ApplicationCore.Services{
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IUriComposer _uriComposer;
-        private readonly IAppLogger<Post> _logger;
+        private readonly IAppLogger<PostService> _logger;
         private readonly IPostRepository _postRepository;
-        public PostService(IUnitOfWork uow, IAppLogger<Post> logger, IPostRepository postRepository)
+        public PostService(IUnitOfWork uow, IAppLogger<PostService> logger, IPostRepository postRepository)
         {
             _unitOfWork = uow;
             _logger = logger;
@@ -29,7 +29,7 @@ namespace Car4U.ApplicationCore.Services{
 
         public async Task CreatePostAsync(Post post)
         {
-            _postRepository.Add(post);
+            await _postRepository.Add(post);
             await _unitOfWork.CommitAsync();
             
         }
@@ -41,7 +41,7 @@ namespace Car4U.ApplicationCore.Services{
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task<IEnumerable<Post>> GetNewestPostsAsync(Guid? userId, int pageMargin, int pageIndex)
+        public async Task<IEnumerable<Post>> GetNewestPostsAsync(Guid? userId, int pageMargin = 10, int pageIndex = 1)
         {
              IQueryable<Post> newestPosts;
             if(userId == null)

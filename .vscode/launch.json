@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Car4U/bin/Debug/netcoreapp2.1/Car4U.Web.dll",
+            "program": "${workspaceFolder}/Car4U.WebAPI/bin/Debug/netcoreapp2.1/Car4U.WebAPI.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Car4U",
+            "cwd": "${workspaceFolder}/Car4U.WebAPI",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {

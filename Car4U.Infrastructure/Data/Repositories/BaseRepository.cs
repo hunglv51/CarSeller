@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Car4U.Infrastructure.Data.Repositories
 {
-    public abstract class BaseRepository<TKey, TVal> : IRepository<TKey,TVal> where TVal : BaseEntity<TKey>
+    public abstract class BaseRepository<TKey, TVal> : IRepository<TKey,TVal> where TVal : class
     {
         private readonly CarSellerContext _context;
         private DbSet<TVal> _dbSet => _context.Set<TVal>();
-        public  IQueryable<TVal> Entities => _dbSet.AsQueryable();
+        
 
         private BaseRepository(){
             
@@ -22,9 +22,9 @@ namespace Car4U.Infrastructure.Data.Repositories
         {
             _context = context;
         }
-        public virtual void Add(TVal entity)
+        public virtual async Task Add(TVal entity)
         {
-            Entities.Append(entity);
+            await _dbSet.AddAsync(entity);
         }
 
       
@@ -82,6 +82,8 @@ namespace Car4U.Infrastructure.Data.Repositories
 
         public virtual void Update(TVal entity)
         {
+            // _dbSet.Attach(entity);   
+            // _context.Entry(entity).State = EntityState.Modified;            
             _context.Set<TVal>().Update(entity);
 
         }
