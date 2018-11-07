@@ -3444,7 +3444,7 @@
     "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.0.1916590": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ATgVprl2wbWCIV2q79OzRdNgM7HtS+GOcHvaKPGdPK5QMGXd7I5SxDCV/ZFe++vJUIGAj7zMz4F3vhS2dNHZkw==",
+      "sha512": "sha512-bIEPJ4V0spW0aLb5/XQvs8ziv85wrR62IDowAItnfXCXHOUelEEOW59lq95IfXMFf/tWUDyrcLQh8rnFVfWWyw==",
       "path": "microsoft.visualstudio.azure.containers.tools.targets/1.0.1916590",
       "hashPath": "microsoft.visualstudio.azure.containers.tools.targets.1.0.1916590.nupkg.sha512"
     },
@@ -3993,7 +3993,7 @@
     "Microsoft.AspNetCore.Razor.Design/2.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-f8PKGcxiezL1RVqmnmrazj24Mj4KCTSXqwdotl7Lc+82h8iLV7ItxEIShTJakG7M9iw0ZuCocM0J/IhYesdQrg==",
+      "sha512": "sha512-BOK5fckW9v7xWjpEI6bPGwkjw10OPVASZcAa8HoWJo/0Mmg4Azddj92v8noU+YgvD/6zNZ9o/RiRXXKxk5rYwQ==",
       "path": "microsoft.aspnetcore.razor.design/2.1.1",
       "hashPath": "microsoft.aspnetcore.razor.design.2.1.1.nupkg.sha512"
     },
