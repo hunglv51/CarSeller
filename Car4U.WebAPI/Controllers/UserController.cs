@@ -5,6 +5,7 @@ using Car4U.ApplicationCore.Entities;
 using Car4U.ApplicationCore.Interfaces;
 using Car4U.Infrastructure.Data;
 using Car4U.Infrastructure.Data.Repositories;
+using System;
 
 namespace Car4U.WebAPI.Controllers
 {
@@ -25,5 +26,24 @@ namespace Car4U.WebAPI.Controllers
         public async Task<IEnumerable<AppUser>> Get(int pageIndex = 1){
             return (await _indentityService.ListUser(PageMargin, pageIndex));
         }
+
+        [HttpGet("{id}", Name="GetUser")]
+        public async Task<ActionResult<AppUser>> GetById(Guid id)
+        {
+            return (await _indentityService.GetUserAsync(id));
+        }
+        [HttpPost]
+        public async Task<ActionResult<AppUser>> Post(AppUser user)
+        {
+            await _indentityService.AddUser(user);
+            return CreatedAtRoute("GetUser", new {id = user.Id}, user);
+        }
+
+        // [HttpPut]
+        // public async Task<ActionResult> Put(Guid id,AppUser user)
+        // {
+        //     await 
+        // }
+       
     }
 }

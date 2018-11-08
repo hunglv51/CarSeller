@@ -45,7 +45,7 @@ namespace Car4U.WebAPI.Controllers
             return CreatedAtRoute("GetPostCategory", new {id = postCategory.Id}, postCategory);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, PostCategory postCategory){
             var category = await _postCategoryService.GetPostCategory(id);
             if(category == null)
@@ -54,7 +54,7 @@ namespace Car4U.WebAPI.Controllers
             await _postCategoryService.UpdatePostCategory(postCategory);
             return NoContent();
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             var category = await _postCategoryService.GetPostCategory(id);
