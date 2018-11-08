@@ -1,12 +1,3 @@
-C:/Users/le.viet.hung/source/repos/Car4U/Car4U.ApplicationCore/bin/Debug/netcoreapp2.1/Car4U.ApplicationCore.deps.json
-C:/Users/le.viet.hung/source/repos/Car4U/Car4U.ApplicationCore/bin/Debug/netcoreapp2.1/Car4U.ApplicationCore.dll
-C:/Users/le.viet.hung/source/repos/Car4U/Car4U.ApplicationCore/bin/Debug/netcoreapp2.1/Car4U.ApplicationCore.pdb
-C:/Users/le.viet.hung/source/repos/Car4U/Car4U.ApplicationCore/obj/Debug/netcoreapp2.1/Car4U.ApplicationCore.csproj.CoreCompileInputs.cache
-C:/Users/le.viet.hung/source/repos/Car4U/Car4U.ApplicationCore/obj/Debug/netcoreapp2.1/Car4U.ApplicationCore.AssemblyInfoInputs.cache
-C:/Users/le.viet.hung/source/repos/Car4U/Car4U.ApplicationCore/obj/Debug/netcoreapp2.1/Car4U.ApplicationCore.AssemblyInfo.cs
-C:/Users/le.viet.hung/source/repos/Car4U/Car4U.ApplicationCore/obj/Debug/netcoreapp2.1/Car4U.ApplicationCore.dll
-C:/Users/le.viet.hung/source/repos/Car4U/Car4U.ApplicationCore/obj/Debug/netcoreapp2.1/Car4U.ApplicationCore.pdb
-C:/Users/le.viet.hung/source/repos/Car4U/Car4U.ApplicationCore/obj/Debug/netcoreapp2.1/Car4U.ApplicationCore.csprojAssemblyReference.cache
 /media/viethung/Work/source/repos/CarSeller/Car4U.ApplicationCore/bin/Debug/netcoreapp2.1/Car4U.ApplicationCore.deps.json
 /media/viethung/Work/source/repos/CarSeller/Car4U.ApplicationCore/bin/Debug/netcoreapp2.1/Car4U.ApplicationCore.dll
 /media/viethung/Work/source/repos/CarSeller/Car4U.ApplicationCore/bin/Debug/netcoreapp2.1/Car4U.ApplicationCore.pdb
@@ -16,3 +7,11 @@ C:/Users/le.viet.hung/source/repos/Car4U/Car4U.ApplicationCore/obj/Debug/netcore
 /media/viethung/Work/source/repos/CarSeller/Car4U.ApplicationCore/obj/Debug/netcoreapp2.1/Car4U.ApplicationCore.AssemblyInfo.cs
 /media/viethung/Work/source/repos/CarSeller/Car4U.ApplicationCore/obj/Debug/netcoreapp2.1/Car4U.ApplicationCore.dll
 /media/viethung/Work/source/repos/CarSeller/Car4U.ApplicationCore/obj/Debug/netcoreapp2.1/Car4U.ApplicationCore.pdb
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.ApplicationCore\bin\Debug\netcoreapp2.1\Car4U.ApplicationCore.deps.json
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.ApplicationCore\bin\Debug\netcoreapp2.1\Car4U.ApplicationCore.dll
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.ApplicationCore\bin\Debug\netcoreapp2.1\Car4U.ApplicationCore.pdb
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.ApplicationCore\obj\Debug\netcoreapp2.1\Car4U.ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.ApplicationCore\obj\Debug\netcoreapp2.1\Car4U.ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.ApplicationCore\obj\Debug\netcoreapp2.1\Car4U.ApplicationCore.AssemblyInfo.cs
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.ApplicationCore\obj\Debug\netcoreapp2.1\Car4U.ApplicationCore.dll
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.ApplicationCore\obj\Debug\netcoreapp2.1\Car4U.ApplicationCore.pdb

@@ -5,8 +5,7 @@ using Car4U.ApplicationCore.Entities;
 
 namespace Car4U.WebAPI.ViewModels
 {
-    public class NewestNotificationViewModel 
+    public class UserViewModel 
     {
-        public IEnumerable<Notification> Notifications { get; set; }
     }
 }

@@ -4,6 +4,8 @@ using Car4U.Infrastructure.Data.Repositories;
 using Car4U.WebAPI.Intefaces;
 using Car4U.WebAPI.ViewModels;
 using System;
+using System.Collections.Generic;
+
 namespace Car4U.WebAPI.Services
 
 {
@@ -18,11 +20,6 @@ namespace Car4U.WebAPI.Services
             _notificationRepository = repository;
         }
 
-        public Task<NewestNotificationViewModel> NewestNotification => throw new NotImplementedException();
-
-        public Task<NewestNotificationViewModel> GetNewestNotification()
-        {
-            throw new NotImplementedException();
-        }
+        public Task<IEnumerable<NotificationViewModel>> NewestNotification => throw new NotImplementedException();
     }
 }
