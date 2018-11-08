@@ -4172,11 +4172,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\le.viet.hung\\source\\repos\\Car4U\\Car4U.Infrastructure\\Car4U.Infrastructure.csproj",
+      "projectUniqueName": "c:\\Users\\le.viet.hung\\source\\repos\\Car4U\\Car4U.Infrastructure\\Car4U.Infrastructure.csproj",
       "projectName": "Car4U.Infrastructure",
-      "projectPath": "C:\\Users\\le.viet.hung\\source\\repos\\Car4U\\Car4U.Infrastructure\\Car4U.Infrastructure.csproj",
+      "projectPath": "c:\\Users\\le.viet.hung\\source\\repos\\Car4U\\Car4U.Infrastructure\\Car4U.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\le.viet.hung\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\le.viet.hung\\source\\repos\\Car4U\\Car4U.Infrastructure\\obj\\",
+      "outputPath": "c:\\Users\\le.viet.hung\\source\\repos\\Car4U\\Car4U.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -4195,8 +4195,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\le.viet.hung\\source\\repos\\Car4U\\Car4U.ApplicationCore\\Car4U.ApplicationCore.csproj": {
-              "projectPath": "C:\\Users\\le.viet.hung\\source\\repos\\Car4U\\Car4U.ApplicationCore\\Car4U.ApplicationCore.csproj"
+            "c:\\Users\\le.viet.hung\\source\\repos\\Car4U\\Car4U.ApplicationCore\\Car4U.ApplicationCore.csproj": {
+              "projectPath": "c:\\Users\\le.viet.hung\\source\\repos\\Car4U\\Car4U.ApplicationCore\\Car4U.ApplicationCore.csproj"
             }
           }
         }
