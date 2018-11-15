@@ -12,10 +12,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
-using Car4U.ApplicationCore.Interfaces;
+using Car4U.Domain.Interfaces;
 using Car4U.Infrastructure.Logging;
 using Car4U.Infrastructure.Data.Repositories;
-using Car4U.WebAPI.Services;
+using Car4U.Application.Services;
+using AutoMapper;
+using Car4U.Application.AutoMapper;
 
 namespace Car4U.WebAPI
 {
@@ -33,11 +35,12 @@ namespace Car4U.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
-            services.AddScoped(typeof(INotificationRepository), typeof(NotificationRepository));
-            services.AddScoped(typeof(IPostRepository), typeof(PostRepository));
-            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
-
+            // services.AddScoped(typeof(INotificationRepository), typeof(NotificationRepository));
+            // services.AddScoped(typeof(IPostRepository), typeof(PostRepository));
+            // services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             services.AddEntityFrameworkNpgsql().AddDbContext<CarSellerContext>(o => o.UseNpgsql(Configuration.GetConnectionString("CarSellerContext")));
+            Mapper.Initialize(config => AutoMapperConfig.RegisterMapping());
+            services.AddAutoMapper();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

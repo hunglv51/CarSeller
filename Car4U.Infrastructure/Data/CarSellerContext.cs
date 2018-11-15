@@ -1,4 +1,4 @@
-﻿using Car4U.ApplicationCore.Entities;
+﻿using Car4U.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

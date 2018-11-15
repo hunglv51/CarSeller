@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\le.viet.hung\\source\\repos\\Car4U\\Car4U.Domain\\Car4U.Domain.csproj",
+  "TargetFramework": "netcoreapp2.1",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}

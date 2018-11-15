@@ -1,12 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Car4U.ApplicationCore.Entities;
-using Car4U.ApplicationCore.Interfaces;
-using Car4U.ApplicationCore.Services;
+using Car4U.Domain.Entities;
 using Car4U.Infrastructure.Data;
 using Car4U.Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Car4U.Application.ViewModels;
+using Car4U.Domain.Exceptions;
+using AutoMapper;
+using Car4U.Domain.Enums;
 
 namespace Car4U.WebAPI.Controllers
 {
@@ -14,55 +15,88 @@ namespace Car4U.WebAPI.Controllers
     [Route("api/[controller]")]
     public class PostCategoryController : ControllerBase
     {
-        private PostCategoryService _postCategoryService;
-        public PostCategoryController(CarSellerContext context, IAppLogger<PostCategoryService> logger)
+        private readonly IMapper _testMapper;
+        private PostCategoryViewModelService _postCategoryService;
+        private PageViewModel pageInfo = new PageViewModel(10);
+        public PostCategoryController(CarSellerContext context, IMapper mapper)
         {
             var repository = new PostCategoryRepository(context);
             var uow = new UnitOfWork(context);
-            _postCategoryService = new PostCategoryService(uow, logger, repository);    
+            _testMapper = mapper;
+            _postCategoryService = new PostCategoryViewModelService(repository,  uow, mapper);    
         }
         [HttpGet]
-        public async Task<IEnumerable<PostCategory>> GetAll()
+        public async Task<IEnumerable<PostCategoryViewModel>> GetAll(int pageIndex = 1)
         {
-            return (await _postCategoryService.GetListPostCategories());
+            pageInfo.PageIndex = pageIndex;            
+            return (await _postCategoryService.GetListEntities(pageInfo));
         }
 
         
         [HttpGet("{id}", Name = "GetPostCategory")]
-        public async Task<ActionResult<PostCategory>> GetById(int id)
+        public async Task<ActionResult<PostCategoryViewModel>> GetById(int id)
         {
-            var postCategory = await _postCategoryService.GetPostCategory(id);
-            if(postCategory == null)
+            try{
+                var postCategoryViewModel = await _postCategoryService.GetEntity(id);
+                return postCategoryViewModel;
+
+            }
+            catch(EntityNotFoundException<PostCategory>)
+            {
                 return NotFound();
-            return postCategory;
+            }
+           
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post(PostCategory postCategory)
-        {
-            await _postCategoryService.CreatePostCategory(postCategory);
+        // public ActionResult<PostCategory> GetById(int id)
+        // {
             
-            return CreatedAtRoute("GetPostCategory", new {id = postCategory.Id}, postCategory);
+        //     var categoryViewModel = new PostCategoryViewModel{
+        //         BrandName = "HONDA",
+        //         CarType = "SUV",
+        //         CarFamily = "CRV",
+        //         IsImported =  true,
+        //         IsUsed =  true,
+        //         DriveType = "RearWheel",
+        //         Transmission = "Mix"
+        //     };
+        //     PostCategory category = _testMapper.Map<PostCategory>(categoryViewModel);
+        //     return category;
+
+           
+            
+        // }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(PostCategoryViewModel postCategoryViewModel)
+        {
+            await _postCategoryService.CreateEntity(postCategoryViewModel);
+            
+            return CreatedAtRoute("GetPostCategory", new {id = postCategoryViewModel.Id}, postCategoryViewModel);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, PostCategory postCategory){
-            var category = await _postCategoryService.GetPostCategory(id);
-            if(category == null)
+        public async Task<IActionResult> Put(int id, PostCategoryViewModel postCategoryViewModel){
+            try{
+                await _postCategoryService.UpdateEntity(id, postCategoryViewModel);
+                return NoContent();
+            }
+            catch(EntityNotFoundException<PostCategory>)
+            {
                 return NotFound();
-            postCategory.Id = id;
-            await _postCategoryService.UpdatePostCategory(postCategory);
-            return NoContent();
+            }
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var category = await _postCategoryService.GetPostCategory(id);
-            if(category == null)
+            try{
+                await _postCategoryService.DeleteEntity(id);
                 return NoContent();
-
-            await _postCategoryService.DeletePostCategory(id);
-            return NoContent();
+            }
+            catch(EntityNotFoundException<PostCategory>)
+            {
+                return NotFound();
+            }
         }
     }
 }

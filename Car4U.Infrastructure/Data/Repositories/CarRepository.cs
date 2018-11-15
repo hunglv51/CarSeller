@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Car4U.ApplicationCore.Entities;
+using Car4U.Domain.Entities;
 
 namespace Car4U.Infrastructure.Data.Repositories
 {

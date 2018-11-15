@@ -1,4 +1,4 @@
-using Car4U.ApplicationCore.Entities;
+using Car4U.Domain.Entities;
 using Car4U.Infrastructure.Data.Extensions;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

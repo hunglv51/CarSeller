@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Car4U.ApplicationCore.Entities;
-using Car4U.ApplicationCore.Interfaces;
+using Car4U.Domain.Entities;
+using Car4U.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Car4U.Infrastructure.Data.Repositories

@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Car4U.ApplicationCore.Entities;
-using Car4U.ApplicationCore.Interfaces;
-using Car4U.ApplicationCore.Services;
+using Car4U.Domain.Entities;
+using Car4U.Domain.Interfaces;
+using Car4U.Application.Services;
 using Car4U.Infrastructure.Data;
 using Car4U.Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Car4U.Application.ViewModels;
+using AutoMapper;
 
 namespace Car4U.WebAPI.Controllers
 {
@@ -15,33 +17,34 @@ namespace Car4U.WebAPI.Controllers
     public class NotificationsController : ControllerBase
     {
 
-        private NotificationService _notificationService;
-
+        private NotificationViewModelService _notificationService;
+        private PageViewModel _pageInfo = new PageViewModel(10);
 
         private readonly CarSellerContext _db;
-        public NotificationsController(CarSellerContext context, IAppLogger<NotificationService> logger)
+        public NotificationsController(CarSellerContext context, IMapper mapper)
         {
             var repository = new NotificationRepository(context);
             var uow = new UnitOfWork(context);
-            _notificationService = new NotificationService(uow, logger, repository);    
+            _notificationService = new NotificationViewModelService(uow, repository, mapper);    
         }
         [HttpGet]
-        public async Task<IEnumerable<Notification>> GetAll()
+        public async Task<IEnumerable<NotificationViewModel>> GetAll(int page = 1)
         {
-            return (await _notificationService.GetNewestNotificationAsync(null));
+            _pageInfo.PageIndex = page;
+            return (await _notificationService.GetListEntities(_pageInfo));
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post(Notification notification)
-        {
-            notification.Id = Guid.NewGuid();
-            await _notificationService.CreateNotification(notification);
-            return CreatedAtRoute("GetNotification", new {id = notification.Id}, notification);
-        }
+        // [HttpPost]
+        // public async Task<IActionResult> Post(NotificationViewModel notificationViewModel)
+        // {
+            
+        //     await _notificationService.CreateNotification(notificationViewModel);
+        //     return CreatedAtRoute("GetNotification", new {id = notification.Id}, notification);
+        // }
         [HttpGet("{id}", Name = "GetNotification")]
-        public async Task<Notification> GetById(Guid id)
+        public async Task<NotificationViewModel> GetById(Guid id)
         {
-            var notification = await _notificationService.GetNotificationAsync(id);
+            var notification = await _notificationService.GetEntity(id);
             return notification;
         }
     }

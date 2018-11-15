@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,7 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Car4U.ApplicationCore\Car4U.ApplicationCore.csproj" />
+    
+    <ProjectReference Include="..\Car4U.Domain\Car4U.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
