@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar>
+      
+      <ion-title text-center> CAR4U MOBILE APP </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-card>
+      <ion-card-header text-center> SIGN UP </ion-card-header>
+      <ion-list>
+        <ion-item> <img src="assets/imgs/login-img.jfif" /> </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="User name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="password" placeholder="Password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <button ion-button full large (click)="register()">
+            <ion-icon name="add" item-start></ion-icon>
+            CREATE
+          </button>
+        </ion-item>
+        
+      </ion-list>
+    </ion-card>
+  </ion-content>
+  
