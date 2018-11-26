@@ -34,11 +34,11 @@ namespace Car4U.Domain.Entities
         [DataType(DataType.Date)]
         public DateTime CreatedDate { get; set; }
         public virtual Car Car { get; set; }
+        [ForeignKey("PostId")]
         public virtual ICollection<Notification> Notifications { get; set; }
       
         [DataType(DataType.DateTime)]
         public DateTime ModifiedDate { get; set; }
-
         [ForeignKey("PostCategoryId")]
         public PostCategory Category { get; set; }
     }

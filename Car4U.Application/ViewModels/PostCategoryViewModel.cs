@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Car4U.Domain.Entities;
 
 namespace Car4U.Application.ViewModels
 {
@@ -14,7 +16,7 @@ namespace Car4U.Application.ViewModels
         public bool IsUsed { get; set; }
         public string DriveType { get; set; }
         public string Transmission { get; set; }
-
+        public int PostQuantity { get; set; }
         public PostCategoryViewModel()
         {
             
@@ -48,6 +50,12 @@ namespace Car4U.Application.ViewModels
             IsUsed = isUsed;
             DriveType = driveType;
             Transmission = transmission;
+        }
+
+        public PostCategoryViewModel(PostCategoryViewModel categoryViewModel,int quantity) : this(categoryViewModel.BrandName, categoryViewModel.CarType, categoryViewModel.CarFamily, categoryViewModel.IsImported, categoryViewModel.IsUsed, categoryViewModel.DriveType, categoryViewModel.Transmission)
+        {
+            
+            this.PostQuantity = quantity;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Car4U.Application.Intefaces
 {
     public interface IPostViewModelService
     {
-  
+        Task<ListPostViewModel> GetNewestPostViewModel(PageViewModel pageInfo);
         
     }
 }

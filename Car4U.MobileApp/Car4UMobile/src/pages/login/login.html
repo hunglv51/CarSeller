@@ -1,33 +1,34 @@
 <ion-header>
   <ion-navbar>
     
-    <ion-title text-center> CAR4U MOBILE APP </ion-title>
+    <ion-title text-center text-uppercase> car4u mobile app </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-card>
-    <ion-card-header text-center> LOGIN </ion-card-header>
+    <ion-card-header text-center text-uppercase> login </ion-card-header>
     <ion-list>
       <ion-item> <img src="assets/imgs/login-img.jfif" /> </ion-item>
       <ion-item>
+        <!-- <dx-text-box mask="0:00" [inputAttr]="{class: 'inputMask'}" mode="tel"  (focusin)="handleClick($event)"></dx-text-box> -->
         <ion-input type="text" placeholder="User name"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="password" placeholder="Password"></ion-input>
+        <ion-input type="password" placeholder="Password" id="pass"></ion-input>
       </ion-item>
       <ion-item>
           
-        <button ion-button full large (click)="login()">
+        <button ion-button full large (click)="login()" text-uppercase>
           <ion-icon name="log-in" item-start></ion-icon>
-          LOGIN
+          login
         </button>
       </ion-item>
       <ion-item> <h6 text-center>OR</h6> </ion-item>
       <ion-item>
-        <button ion-button full large (click)="register()">
+        <button ion-button full large (click)="register()" text-uppercase>
           <ion-icon name="person-add" item-start></ion-icon>
-          SIGN UP
+          sign up
         </button>
       </ion-item>
       <ion-item> <h6 text-center>or sign up by</h6> </ion-item>

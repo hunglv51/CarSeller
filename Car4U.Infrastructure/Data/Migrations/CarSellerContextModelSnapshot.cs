@@ -19,7 +19,7 @@ namespace Car4U.Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("Car4U.ApplicationCore.Entities.AppUser", b =>
+            modelBuilder.Entity("Car4U.Domain.Entities.AppUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -63,7 +63,7 @@ namespace Car4U.Infrastructure.Migrations
                     b.ToTable("AppUser");
                 });
 
-            modelBuilder.Entity("Car4U.ApplicationCore.Entities.Car", b =>
+            modelBuilder.Entity("Car4U.Domain.Entities.Car", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
@@ -101,7 +101,7 @@ namespace Car4U.Infrastructure.Migrations
                     b.ToTable("Cars");
                 });
 
-            modelBuilder.Entity("Car4U.ApplicationCore.Entities.CarImage", b =>
+            modelBuilder.Entity("Car4U.Domain.Entities.CarImage", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -109,6 +109,8 @@ namespace Car4U.Infrastructure.Migrations
                     b.Property<long?>("CarId");
 
                     b.Property<int>("Height");
+
+                    b.Property<int>("Type");
 
                     b.Property<string>("Uri");
 
@@ -121,7 +123,7 @@ namespace Car4U.Infrastructure.Migrations
                     b.ToTable("CarImages");
                 });
 
-            modelBuilder.Entity("Car4U.ApplicationCore.Entities.Notification", b =>
+            modelBuilder.Entity("Car4U.Domain.Entities.Notification", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -131,8 +133,6 @@ namespace Car4U.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
-                    b.Property<bool>("ForAdmin");
-
                     b.Property<bool>("IsRead");
 
                     b.Property<DateTime>("ModifiedDate");
@@ -140,8 +140,6 @@ namespace Car4U.Infrastructure.Migrations
                     b.Property<Guid?>("PostId");
 
                     b.Property<string>("Title");
-
-                    b.Property<int>("Type");
 
                     b.Property<Guid?>("UserId");
 
@@ -154,7 +152,7 @@ namespace Car4U.Infrastructure.Migrations
                     b.ToTable("Notifications");
                 });
 
-            modelBuilder.Entity("Car4U.ApplicationCore.Entities.Post", b =>
+            modelBuilder.Entity("Car4U.Domain.Entities.Post", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -184,7 +182,7 @@ namespace Car4U.Infrastructure.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("Car4U.ApplicationCore.Entities.PostCategory", b =>
+            modelBuilder.Entity("Car4U.Domain.Entities.PostCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -210,38 +208,38 @@ namespace Car4U.Infrastructure.Migrations
                     b.ToTable("PostCategories");
                 });
 
-            modelBuilder.Entity("Car4U.ApplicationCore.Entities.Car", b =>
+            modelBuilder.Entity("Car4U.Domain.Entities.Car", b =>
                 {
-                    b.HasOne("Car4U.ApplicationCore.Entities.Post", "Post")
+                    b.HasOne("Car4U.Domain.Entities.Post", "Post")
                         .WithOne("Car")
-                        .HasForeignKey("Car4U.ApplicationCore.Entities.Car", "PostId");
+                        .HasForeignKey("Car4U.Domain.Entities.Car", "PostId");
                 });
 
-            modelBuilder.Entity("Car4U.ApplicationCore.Entities.CarImage", b =>
+            modelBuilder.Entity("Car4U.Domain.Entities.CarImage", b =>
                 {
-                    b.HasOne("Car4U.ApplicationCore.Entities.Car", "Car")
+                    b.HasOne("Car4U.Domain.Entities.Car", "Car")
                         .WithMany("Images")
                         .HasForeignKey("CarId");
                 });
 
-            modelBuilder.Entity("Car4U.ApplicationCore.Entities.Notification", b =>
+            modelBuilder.Entity("Car4U.Domain.Entities.Notification", b =>
                 {
-                    b.HasOne("Car4U.ApplicationCore.Entities.Post", "Post")
+                    b.HasOne("Car4U.Domain.Entities.Post", "Post")
                         .WithMany("Notifications")
                         .HasForeignKey("PostId");
 
-                    b.HasOne("Car4U.ApplicationCore.Entities.AppUser", "User")
+                    b.HasOne("Car4U.Domain.Entities.AppUser", "User")
                         .WithMany("Notifications")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("Car4U.ApplicationCore.Entities.Post", b =>
+            modelBuilder.Entity("Car4U.Domain.Entities.Post", b =>
                 {
-                    b.HasOne("Car4U.ApplicationCore.Entities.PostCategory", "Category")
+                    b.HasOne("Car4U.Domain.Entities.PostCategory", "Category")
                         .WithMany("Posts")
                         .HasForeignKey("PostCategoryId");
 
-                    b.HasOne("Car4U.ApplicationCore.Entities.AppUser", "User")
+                    b.HasOne("Car4U.Domain.Entities.AppUser", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId");
                 });

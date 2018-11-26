@@ -9,50 +9,54 @@
     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>DASHBOARD</ion-title>
+    <ion-title text-center text-uppercase>dashboard</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding text-center>
   <h2>Newest Posts</h2>
   <ion-list>
-    <ion-card>
-      <img src="assets/imgs/car-img-placeholder-1.jpeg" />
+    <ion-card *ngFor="let post of listPost">
+      <img [src]="post.images[0].uri" />
       <ion-card-content>
         <ion-card-title text-center color="danger" text-left>
-            👑Bán BMW 5 Series 528i 2014, màu đen, xe nhập👑
+            👑{{post.title}}👑
         </ion-card-title>
-        <h3 ion-text text-left color="primary">Giá: 123456789 VND</h3>
+        <h3 ion-text text-left color="primary">Giá: {{post.price | carPrice}} VND</h3>
         <ion-grid>
           <ion-row>
             <ion-col text-left>
               <ion-icon item-start name="alert" color="primary"></ion-icon>
-              <ion-badge item-end >Đã qua sử dụng</ion-badge>
+              <ion-badge item-end >{{(post.isUsed) ? 'Đã qua sử dụng' : 'Mới'}}</ion-badge>
             </ion-col>
             <ion-col text-left>
               <ion-icon item-start name="car" color="primary"></ion-icon>
-              <ion-badge item-end>1000 km</ion-badge>
+              <ion-badge item-end>{{post.drivenDistance}} km</ion-badge>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col text-left>
               <ion-icon item-start name="pin" color="primary"></ion-icon>
-              <ion-badge item-end>Hà Nội</ion-badge>
+              <ion-badge item-end>{{post.city}}</ion-badge>
             </ion-col>
             <ion-col text-left>
               <ion-icon item-start name="calendar" color="primary"></ion-icon>
-              <ion-badge item-end>11/1/2018</ion-badge>
+              <ion-badge item-end>{{post.createdDate | date : 'dd/MM/yyyy'}}</ion-badge>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <button ion-button round icon-only color="secondary" small>
-                <ion-icon name="call"></ion-icon>
+              <button ion-button round icon-only color="secondary">
+                  <a [href]="'tel:' + post.phone" color="light" ion-text>
+                    <ion-icon name="call"></ion-icon>
+                  </a>
               </button>
             </ion-col>
             <ion-col>
-                <button ion-button round icon-only color="dark" small>
-                  <ion-icon name="send"></ion-icon>
+                <button ion-button round icon-only color="dark">
+                  <a href="'sms:'' + post.phone" color="light" ion-text>
+                    <ion-icon name="send"></ion-icon>
+                  </a>
                 </button>
             </ion-col>
           </ion-row>

@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <DockerTargetOS>Linux</DockerTargetOS>
     <UserSecretsId>544c7317-597a-4144-9fe4-cb12d63a77ea</UserSecretsId>
+   <LangVersion>7.3</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,9 +30,5 @@
     <ProjectReference Include="..\Car4U.Application\Car4U.Application.csproj" />
     <ProjectReference Include="..\Car4U.Domain\Car4U.Domain.csproj" />
   </ItemGroup>
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-   <LangVersion>7.3</LangVersion>
-  </PropertyGroup>
-
+  
 </Project>

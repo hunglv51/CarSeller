@@ -16,6 +16,7 @@ namespace Car4U.Domain.Entities
             Width = width;
             Height = height;
         }
+        
         public Car Car { get; set; }
         [DataType(DataType.Url)]
         public string Uri { get; set; }

@@ -1,0 +1,14 @@
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\bin\Release\netcoreapp2.1\Car4U.Application.deps.json
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\bin\Release\netcoreapp2.1\Car4U.Application.dll
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\bin\Release\netcoreapp2.1\Car4U.Application.pdb
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\bin\Release\netcoreapp2.1\Car4U.Domain.dll
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\bin\Release\netcoreapp2.1\Car4U.Infrastructure.dll
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\bin\Release\netcoreapp2.1\Car4U.Domain.pdb
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\bin\Release\netcoreapp2.1\Car4U.Infrastructure.pdb
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\obj\Release\netcoreapp2.1\Car4U.Application.csprojAssemblyReference.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\obj\Release\netcoreapp2.1\Car4U.Application.csproj.CoreCompileInputs.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\obj\Release\netcoreapp2.1\Car4U.Application.AssemblyInfoInputs.cache
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\obj\Release\netcoreapp2.1\Car4U.Application.AssemblyInfo.cs
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\obj\Release\netcoreapp2.1\Car4U.Application.csproj.CopyComplete
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\obj\Release\netcoreapp2.1\Car4U.Application.dll
+C:\Users\le.viet.hung\source\repos\Car4U\Car4U.Application\obj\Release\netcoreapp2.1\Car4U.Application.pdb

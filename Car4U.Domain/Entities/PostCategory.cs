@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Car4U.Domain.Entities
@@ -29,6 +30,7 @@ namespace Car4U.Domain.Entities
         public bool IsUsed { get; set; }
         public DriveTypes DriveType { get; set; }
         public TransmissionTypes Transmission { get; set; }
+        [ForeignKey("PostCategoryId")]
 
         public virtual ICollection<Post> Posts { get; set; }
     }

@@ -50,7 +50,8 @@ namespace Car4U.Domain.Entities
         public int? WheelBase { get; set; }
         public int? MaxSeatingCapacity { get; set; }
         public int? NumDoor { get; set; }
-        public ICollection<CarImage> Images { get; set; }
+        [ForeignKey("CarId")]
+        public virtual ICollection<CarImage> Images { get; set; }
         [ForeignKey("PostId")]
         public Post Post { get; set; }
 

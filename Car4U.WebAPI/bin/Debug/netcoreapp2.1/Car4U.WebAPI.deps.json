@@ -539,6 +539,7 @@
         "dependencies": {
           "Car4U.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "2.1.4",
+          "Microsoft.EntityFrameworkCore.Design": "2.1.4",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "2.1.2"
         },
         "runtime": {

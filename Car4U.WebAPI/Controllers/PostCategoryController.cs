@@ -28,8 +28,9 @@ namespace Car4U.WebAPI.Controllers
         [HttpGet]
         public async Task<IEnumerable<PostCategoryViewModel>> GetAll(int pageIndex = 1)
         {
-            pageInfo.PageIndex = pageIndex;            
-            return (await _postCategoryService.GetListEntities(pageInfo));
+            // pageInfo.PageIndex = pageIndex;            
+            // return (await _postCategoryService.GetListEntities(pageInfo));
+            return (await _postCategoryService.GetCategories());
         }
 
         

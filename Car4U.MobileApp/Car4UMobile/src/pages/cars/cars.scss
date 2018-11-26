@@ -1,0 +1,26 @@
+page-cars {
+    ion-card{
+        position: relative;
+        text-align: center;
+    }
+    .card-title {
+        position: absolute;
+        bottom: 10%;
+        font-size: 1.0em;
+        width: 100%;
+        font-weight: bold;
+        color: #fd931b;
+      }
+    
+      .card-subtitle {
+        font-size: 0.8em;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        color: #fd931b;
+      }
+      .logo-container{
+          display: grid;
+          grid-template-columns: ". ."
+      }
+}

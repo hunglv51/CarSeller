@@ -21,23 +21,23 @@
         </ion-list>
       </ion-card-header>
       <ion-list>
-        <button ion-item>
-          Car
+        <button ion-item (click)="goPage('car')">
+          Cars
           <ion-icon name="car" item-start></ion-icon>
         </button>
-        <button ion-item>
-          Post
+        <button ion-item (click)="goPage('post')">
+          Posts
           <ion-icon name="paper" item-start></ion-icon>
         </button>
-        <button ion-item>
-          Notification
+        <button ion-item (click)="goPage('notification')">
+          Notifications
           <ion-icon name="notifications" item-start></ion-icon>
         </button>
-        <button ion-item>
+        <button ion-item (click)="goPage('user')">
           User
           <ion-icon name="people" item-start></ion-icon>
         </button>
-        <button ion-item>
+        <button ion-item (click)="goPage('favorite')">
           Favorite
           <ion-icon name="heart" item-start></ion-icon>
         </button>

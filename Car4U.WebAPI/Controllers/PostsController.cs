@@ -7,6 +7,8 @@ using Car4U.Infrastructure.Data;
 using Car4U.Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
+using Car4U.Application.ViewModels;
+using System;
 
 namespace Car4U.WebAPI.Controllers
 {
@@ -16,6 +18,7 @@ namespace Car4U.WebAPI.Controllers
     public class PostsController : ControllerBase
     {
         const int PageMargin = 10;
+        private PageViewModel pageInfo = new PageViewModel(10);
         private readonly PostViewModelService _postService;
         public PostsController(CarSellerContext context, IMapper mapper)
         {
@@ -24,9 +27,14 @@ namespace Car4U.WebAPI.Controllers
             _postService = new PostViewModelService(unitOfWork, postRepository, mapper);
         }
         
-        // [HttpGet]
-        // public async Task<IEnumerable<Post>> Get(int pageIndex = 1){
-        //     return (await _postService.Get(null, PageMargin, pageIndex));
+        [HttpGet]
+        public async Task<ListPostViewModel> Get(int pageIndex = 1){
+            pageInfo.PageIndex = pageIndex;
+            return (await _postService.GetNewestPostViewModel(pageInfo));
+        }
+        // [HttpGet("{id}")]
+        // public async Task<PostViewModel> Get(Guid id){
+        //     return (await _postService.GetEntity(id));
         // }
 
     }

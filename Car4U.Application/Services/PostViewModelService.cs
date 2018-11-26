@@ -36,7 +36,32 @@ namespace Car4U.Application.Services
             .ToListAsync());
         }
 
-        
+        public async Task<ListPostViewModel> GetNewestPostViewModel(PageViewModel pageInfo)
+        {
+            var listPost = new ListPostViewModel();
+            var posts = _repository.ListAll()
+                            .Skip(pageInfo.PageSkip).Take(pageInfo.PageMargin)
+                            .Select(x => new ListPostItem{
+                                CarType = x.Category.CarType.ToString(),
+                                City = x.User.Address,
+                                CreatedDate = x.CreatedDate,
+                                DrivenDistance = x.Car.DrivenDistance,
+                                Id = x.Id.ToString(),
+                                Images = x.Car.Images,
+                                IsImported = x.Category.IsImported,
+                                IsUsed = x.Category.IsUsed,
+                                ManufactureYear = x.Car.ManufactureYear,
+                                Phone = x.User.PhoneNumber,
+                                Price = x.Car.Price,
+                                Title = x.Title,
+                                Tranmission = x.Category.Transmission.ToString()
+
+                            });
+            listPost.Items =  await posts.ToListAsync();
+            return listPost;
+        }
+
+         
 
    
     }

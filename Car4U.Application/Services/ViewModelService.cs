@@ -31,12 +31,13 @@ namespace Car4U.Application.Services
             var model = _mapper.Map<TModel>(entityViewModel);
             await _repository.Add(model);
             await _unitOfWork.CommitAsync();
+            
         }
 
         public async Task DeleteEntity(TKey id)
         {
-            var notification = await GetModel(id);
-            _repository.Delete(notification);
+            var model = await GetModel(id);
+            _repository.Delete(model);
             await _unitOfWork.CommitAsync();
         }
 
@@ -44,8 +45,8 @@ namespace Car4U.Application.Services
 
         public async Task<TViewModel> GetEntity(TKey id)
         {
-            var notification = await GetModel(id);
-            var viewModel = _mapper.Map<TViewModel>(notification);
+            var model = await GetModel(id);
+            var viewModel = _mapper.Map<TViewModel>(model);
             return viewModel;
         }
 
@@ -60,9 +61,10 @@ namespace Car4U.Application.Services
 
         public async Task UpdateEntity(TKey id, TViewModel entityViewModel)
         {
-            var notification = await GetModel(id);
-            notification = _mapper.Map<TModel>(entityViewModel);
-            _repository.Update(notification);
+            var model = await GetModel(id);
+            _mapper.Map<TViewModel, TModel>(entityViewModel, model);
+            // model.Id = id;
+            _repository.Update(model);
             await _unitOfWork.CommitAsync();
         }
 
