@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PostProvider } from '../../providers/post/post-provider';
 import { CarImage } from '../../models/car-image';
+import { CreatePostPage } from '../create-post/create-post';
 /**
  * Generated class for the DashboardPage page.
  *
@@ -42,5 +43,9 @@ export class DashboardPage {
       console.log(this.listPost);
       
     });
+  }
+  goCreatePost()
+  {
+    this.navCtrl.push(CreatePostPage);
   }
 }

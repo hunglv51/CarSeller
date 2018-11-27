@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarPricePipe } from '../pipes/car-price/car-price';
 import {DxTextBoxModule} from 'devextreme-angular';
 import { ListPostPage } from '../pages/list-post/list-post';
+import { CreatePostPage } from '../pages/create-post/create-post';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     MyApp,
@@ -21,13 +23,15 @@ import { ListPostPage } from '../pages/list-post/list-post';
     RegisterPage,
     CarsPage,
     CarPricePipe,
-    ListPostPage
+    ListPostPage,
+    CreatePostPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    DxTextBoxModule
+    DxTextBoxModule,
+    FormsModule
     
   ],
   bootstrap: [IonicApp],
@@ -37,7 +41,8 @@ import { ListPostPage } from '../pages/list-post/list-post';
     DashboardPage,
     RegisterPage,
     CarsPage,
-    ListPostPage
+    ListPostPage,
+    CreatePostPage
   ],
   providers: [
     StatusBar,
