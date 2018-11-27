@@ -3,15 +3,17 @@ using System;
 using Car4U.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Car4U.Infrastructure.Migrations
 {
     [DbContext(typeof(CarSellerContext))]
-    partial class CarSellerContextModelSnapshot : ModelSnapshot
+    [Migration("20181127033207_add logo url")]
+    partial class addlogourl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,8 +69,6 @@ namespace Car4U.Infrastructure.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CarFamily");
 
                     b.Property<int?>("CylinderCapacity");
 
@@ -192,12 +192,14 @@ namespace Car4U.Infrastructure.Migrations
                     b.Property<string>("BrandName")
                         .HasMaxLength(50);
 
+                    b.Property<string>("CarFamily")
+                        .HasMaxLength(50);
+
                     b.Property<int>("CarType");
 
                     b.Property<int>("DriveType");
 
-                    b.Property<bool>("IsImported")
-                        .HasMaxLength(50);
+                    b.Property<bool>("IsImported");
 
                     b.Property<bool>("IsUsed");
 

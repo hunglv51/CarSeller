@@ -32,6 +32,7 @@ namespace Car4U.WebAPI.Controllers
             // return (await _postCategoryService.GetListEntities(pageInfo));
             return (await _postCategoryService.GetCategories());
         }
+        
 
         
         [HttpGet("{id}", Name = "GetPostCategory")]

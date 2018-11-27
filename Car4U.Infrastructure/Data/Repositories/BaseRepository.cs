@@ -11,7 +11,7 @@ namespace Car4U.Infrastructure.Data.Repositories
 {
     public abstract class BaseRepository<TKey, TVal> : IRepository<TKey,TVal> where TVal : class
     {
-        private readonly CarSellerContext _context;
+        protected readonly CarSellerContext _context;
         private DbSet<TVal> _dbSet => _context.Set<TVal>();
         
 
@@ -72,7 +72,7 @@ namespace Car4U.Infrastructure.Data.Repositories
           return _context.Set<TVal>();
         }
 
-        public IQueryable<TVal> List(ISpecification<TVal> spec)
+        public virtual IQueryable<TVal> List(ISpecification<TVal> spec)
         {
             var queryableResultWithIncludes = spec.Includes
             .Aggregate(_context.Set<TVal>().AsQueryable(), (current, include) => current.Include(include));

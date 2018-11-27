@@ -25,17 +25,21 @@ namespace Car4U.WebAPI.Controllers
             var unitOfWork = new UnitOfWork(context);
             var postRepository = new PostRepository(context);
             _postService = new PostViewModelService(unitOfWork, postRepository, mapper);
+            
         }
         
         [HttpGet]
-        public async Task<ListPostViewModel> Get(int pageIndex = 1){
+        public async Task<ListPostViewModel> Get(string brandName,int pageIndex = 1){
+            if(brandName != null)
+            {
+                return (await _postService.GetByBrandName(brandName));
+            }
             pageInfo.PageIndex = pageIndex;
             return (await _postService.GetNewestPostViewModel(pageInfo));
         }
-        // [HttpGet("{id}")]
-        // public async Task<PostViewModel> Get(Guid id){
-        //     return (await _postService.GetEntity(id));
-        // }
-
+        [HttpGet("{id}")]
+        public async Task<PostViewModel> Get(Guid id){
+            return (await _postService.GetEntity(id));
+        }
     }
 }

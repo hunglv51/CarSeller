@@ -22,30 +22,12 @@ namespace Car4U.Application.ViewModels
         {
             var listCategories = new List<PostCategoryViewModel>();
             var categories = _repository.ListAll()
-                            // .Skip(pageInfo.PageSkip).Take(pageInfo.PageMargin)
-                            // .Select(x => new PostCategoryViewModel{
-                            //     BrandName = x.BrandName,
-                            //     CarFamily = x.CarFamily,
-                            //     CarType = x.CarType.ToString(),
-                            //     DriveType = x.DriveType.ToString(),
-                            //     Id = x.Id,
-                            //     IsImported = x.IsImported,
-                            //     IsUsed = x.IsUsed,
-                            //     Transmission = x.Transmission.ToString(),
-                            //     PostQuantity = x.Posts.Count
-                            // });
-                            .Select(x => new PostCategoryViewModel(_mapper.Map<PostCategoryViewModel>(x), x.Posts.Count));
-            // return (await categories.ToListAsync());
-            return categories;
-        }
-        private PostCategoryViewModel CustomMap(PostCategory postCategory)
-        {
-            var categoryViewModel = _mapper.Map<PostCategoryViewModel>(postCategory);
-            if(postCategory.Posts != null)
-                categoryViewModel.PostQuantity = postCategory.Posts.Count;
-            return categoryViewModel;
+                            .Select(x => _mapper.Map<PostCategoryViewModel>(x));
                             
+
+            return await categories.ToListAsync();
         }
+        
     }
 
 

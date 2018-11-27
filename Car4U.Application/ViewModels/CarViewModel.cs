@@ -21,6 +21,6 @@ namespace Car4U.Application.ViewModels
         public int? MaxSeatingCapacity { get; set; }
         public int? NumDoor { get; set; }
         public ICollection<CarImageViewModel> Images { get; set; }
-
+        public string CarFamily { get; set; }
     }
 }

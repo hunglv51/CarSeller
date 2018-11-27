@@ -1,7 +1,7 @@
 export class CarBrand
 {
-    name:string;
+    brandName:string;
     postQuantity: number;
-    logoUri:string;
+    logoUrl:string;
 
 }

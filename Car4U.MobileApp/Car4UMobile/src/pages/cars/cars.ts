@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CarBrand } from '../../models/car-brand';
 import { PostProvider } from '../../providers/post/post-provider';
+import { ListPostPage } from '../list-post/list-post';
 
 /**
  * Generated class for the CarsPage page.
@@ -27,8 +28,10 @@ export class CarsPage {
       console.log("car brands",this.carBrands);
     });
     
+      
   }
-
-  
-  
+    goCategory(categoryName: string){
+      console.log(categoryName);      
+      this.navCtrl.push(ListPostPage, {brandName: categoryName})
+    }
 }

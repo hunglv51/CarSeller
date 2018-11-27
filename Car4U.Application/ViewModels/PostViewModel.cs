@@ -19,6 +19,7 @@ namespace Car4U.Application.ViewModels
         public DateTime CreatedDate { get; set; }
         public CarViewModel Car { get; set; }
         public ICollection<NotificationViewModel> Notifications { get; set; }
+        public string CarFamily { get; set; }
       
         [DataType(DataType.DateTime)]
         public DateTime ModifiedDate { get; set; }

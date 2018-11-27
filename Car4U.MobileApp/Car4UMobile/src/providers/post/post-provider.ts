@@ -22,9 +22,9 @@ export class PostProvider {
     return this.http.get<Array<CarImage>>("/api/posts");
   }
 
-  testAPI()
+  getPostsByBrand(brandName:string)
   {
-    return this.http.get("/api/users");
+    return this.http.get<Array<CarImage>>("/api/posts?brandName=" + brandName);
   }
 
   getPostCategories() : Observable<Array<CarBrand>>

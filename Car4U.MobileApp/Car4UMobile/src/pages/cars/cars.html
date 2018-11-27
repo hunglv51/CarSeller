@@ -15,11 +15,10 @@
 
 <ion-content padding>
     <div class="logo-container">
-        <!-- <ion-card *ngFor="let logo of carLogoes">
-            <img src="logo.uri" alt="">
-            <p class="card-title">{{logo.title}}</p>
-              <p class="card-subtitle">logo.subTitle</p>
-          </ion-card> -->
+        <ion-card *ngFor="let carBrand of carBrands" (click)=goCategory(carBrand.brandName)>
+            <img [src]="carBrand.logoUrl" alt="">
+              <p class="card-quantity">{{carBrand.postQuantity + " bài đăng"}}</p>
+          </ion-card>
     </div>
   <!-- <ion-grid>
     <ion-row>

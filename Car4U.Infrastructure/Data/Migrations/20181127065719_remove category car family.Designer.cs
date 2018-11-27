@@ -3,15 +3,17 @@ using System;
 using Car4U.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Car4U.Infrastructure.Migrations
 {
     [DbContext(typeof(CarSellerContext))]
-    partial class CarSellerContextModelSnapshot : ModelSnapshot
+    [Migration("20181127065719_remove category car family")]
+    partial class removecategorycarfamily
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

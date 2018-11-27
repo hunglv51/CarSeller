@@ -19,16 +19,13 @@ export class DashboardPage {
   listPost:Array<CarImage>;
   constructor(public navCtrl: NavController, public navParams: NavParams, private postService: PostProvider) {
     
-    this.getPosts(1);
-    console.log(this.listPost);
+    // this.getPosts(1);
+    // console.log(this.listPost);
     // this.postService.testAPI().subscribe(data => console.log(data));  
   }
 
   ionViewOnInit(){
-    console.log("On Init");
-    // this.postService.testAPI().subscribe(data => console.log(data));
-    this.getPosts(1);
-    console.log(this.listPost);
+    
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad DashboardPage');

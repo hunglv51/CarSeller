@@ -14,8 +14,9 @@ namespace Car4U.Domain.Entities
 
         }
         public Car(int manufacturedYear, double price, int drivenDistance, string size, int? weight, int? cylinderCapacity, int? fuelCapacity,
-            int? tireInfo, int? wheelBase, int? maxSeatingCapacity, int? numDoor)
+            int? tireInfo, int? wheelBase, int? maxSeatingCapacity, int? numDoor, string carFamily)
         {
+            CarFamily = carFamily;
             ManufactureYear = manufacturedYear;
             DrivenDistance = drivenDistance;
             Size = size;
@@ -50,6 +51,7 @@ namespace Car4U.Domain.Entities
         public int? WheelBase { get; set; }
         public int? MaxSeatingCapacity { get; set; }
         public int? NumDoor { get; set; }
+        public string CarFamily { get; set; }
         [ForeignKey("CarId")]
         public virtual ICollection<CarImage> Images { get; set; }
         [ForeignKey("PostId")]

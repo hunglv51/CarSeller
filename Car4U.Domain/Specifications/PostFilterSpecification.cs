@@ -5,7 +5,7 @@ namespace Car4U.Domain.Specifications
 {
     public class PostFilterSpecification : BaseSpecification<Post>
     {
-        public PostFilterSpecification(string email) : base(i => i.User.Email == email)
+        public PostFilterSpecification(string brandName) : base(i => i.Category.BrandName == brandName)
         {
 
         }

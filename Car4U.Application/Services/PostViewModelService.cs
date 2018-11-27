@@ -25,16 +25,38 @@ namespace Car4U.Application.Services
             // _logger = logger;
         }
 
-        
-
-        public async Task<IEnumerable<PostViewModel>> GetByUser(UserViewModel user, PageViewModel pageViewModel)
+        public async Task<ListPostViewModel> GetByBrandName(string brandName)
         {
-            var specification = new PostFilterSpecification(user.Email);
-            return (await _repository.List(specification)
-            .Skip(pageViewModel.PageSkip).Take(pageViewModel.PageMargin)
-            .Select(x => _mapper.Map<PostViewModel>(x))
-            .ToListAsync());
+            var specification = new PostFilterSpecification(brandName);
+            var listPost = new ListPostViewModel();
+            var posts = _repository.List(specification)
+                        .Select(x => new ListPostItem{
+                            CarType = x.Category.CarType.ToString(),
+                            City = x.User.Address,
+                            CreatedDate = x.CreatedDate,
+                            DrivenDistance = x.Car.DrivenDistance,
+                            Id = x.Id.ToString(),
+                            Images = x.Car.Images,
+                            IsImported = x.Category.IsImported,
+                            IsUsed = x.Category.IsUsed,
+                            ManufactureYear = x.Car.ManufactureYear,
+                            Phone = x.User.PhoneNumber,
+                            Price = x.Car.Price,
+                            Title = x.Title,
+                            Tranmission = x.Category.Transmission.ToString()
+                        });
+            listPost.Items =  await posts.ToListAsync();
+            return listPost;            
         }
+
+        // public async Task<IEnumerable<PostViewModel>> GetByUser(UserViewModel user, PageViewModel pageViewModel)
+        // {
+        //     // var specification = new PostFilterSpecification(user.Email);
+        //     // return (await _repository.List(specification)
+        //     // .Skip(pageViewModel.PageSkip).Take(pageViewModel.PageMargin)
+        //     // .Select(x => _mapper.Map<PostViewModel>(x))
+        //     // .ToListAsync());
+        // }
 
         public async Task<ListPostViewModel> GetNewestPostViewModel(PageViewModel pageInfo)
         {

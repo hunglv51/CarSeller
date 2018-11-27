@@ -3,24 +3,19 @@ page-cars {
         position: relative;
         text-align: center;
     }
-    .card-title {
+    .card-quantity {
         position: absolute;
-        bottom: 10%;
+        bottom: 0;
         font-size: 1.0em;
         width: 100%;
         font-weight: bold;
         color: #fd931b;
       }
     
-      .card-subtitle {
-        font-size: 0.8em;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        color: #fd931b;
-      }
+      
       .logo-container{
           display: grid;
-          grid-template-columns: ". ."
+          grid-template-areas: ". .";
+          grid-auto-rows: 1fr;
       }
 }

@@ -31,7 +31,7 @@ namespace Car4U.WebAPI
             // services.AddScoped(typeof(INotificationRepository), typeof(NotificationRepository));
             // services.AddScoped(typeof(IPostRepository), typeof(PostRepository));
             // services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
-            services.AddEntityFrameworkNpgsql().AddDbContext<CarSellerContext>(o => o.UseNpgsql(Configuration.GetConnectionString("HerokuPostgreCarSellerContext")));
+            services.AddEntityFrameworkNpgsql().AddDbContext<CarSellerContext>(o => o.UseNpgsql(Configuration.GetConnectionString("LocalCarSellerContext")));
             // _logger.LogError(Configuration.GetConnectionString("HerokuPostgreCarSellerContext"));
             Mapper.Initialize(config => AutoMapperConfig.RegisterMapping());
             services.AddAutoMapper();
