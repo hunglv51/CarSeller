@@ -25,7 +25,7 @@ export class CreatePostPage {
   testImage1 = "data:image/jpeg;base64," +  "file:///storage/emulated/0/Android/data/io.ionic.devapp/cache/1543400158947.jpg";
   testImage2 :any;
   testImage3 :any;
-  images: Array<{src: String}> = [];
+  images: Array<{src: any}> = [];
 
   constructor(
     public navCtrl: NavController,
@@ -84,9 +84,15 @@ export class CreatePostPage {
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64:
+     console.log("image data", imageData.substring(0,100));
+     
      let base64Image = 'data:image/jpeg;base64,' + imageData;
+     console.log(base64Image);
+     
+     console.log(this.sanitizer.bypassSecurityTrustUrl(base64Image));
+     
      this.images.unshift({
-       src: base64Image
+       src: this.sanitizer.bypassSecurityTrustUrl(base64Image)
      })
     }, (err) => {
      // Handle error

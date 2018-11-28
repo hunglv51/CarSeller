@@ -11,12 +11,10 @@ import { CarsPage } from '../pages/cars/cars';
 import { PostProvider } from '../providers/post/post-provider';
 import { HttpClientModule } from '@angular/common/http';
 import { CarPricePipe } from '../pipes/car-price/car-price';
-import {DxTextBoxModule} from 'devextreme-angular';
 import { ListPostPage } from '../pages/list-post/list-post';
 import { CreatePostPage } from '../pages/create-post/create-post';
 import { FormsModule } from '@angular/forms';
 import {Camera} from "@ionic-native/camera";
-import {File} from "@ionic-native/file";
 @NgModule({
   declarations: [
     MyApp,
@@ -32,7 +30,6 @@ import {File} from "@ionic-native/file";
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    DxTextBoxModule,
     FormsModule
     
   ],
@@ -47,7 +44,6 @@ import {File} from "@ionic-native/file";
     CreatePostPage
   ],
   providers: [
-    File,
     Camera,
     StatusBar,
     SplashScreen,
