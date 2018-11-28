@@ -5,54 +5,128 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>{{"new post" | titlecase}}</ion-title>
+    <ion-title>{{ "new post" | titlecase }}</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content padding>
   <ion-grid>
     <ion-row>
       <ion-col>
         <ion-item>
-            <ion-label floating>
-              Title
-              </ion-label>
-              <ion-input type="text"></ion-input>
+          <ion-label floating> Title </ion-label>
+          <ion-input type="text" [(ngModel)]="post.title"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
-        <ion-col>
-          <ion-item>
-              <ion-label floating>
-                  Content
-                </ion-label>
-                <ion-textarea></ion-textarea>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-          <ion-col>
-            <ion-item>
-                <ion-label floating>
-                    Price
-                  </ion-label>
-                  <ion-input type="number"></ion-input>
-
-            </ion-item>
-          </ion-col>
-          <ion-col>
-              <ion-item>
-                  <ion-label floating>
-                      Driven distance(km)
-                    </ion-label>
-                  <ion-input type="number"></ion-input>
-              </ion-item>
-            </ion-col>
-        </ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label floating> Content </ion-label>
+          <ion-textarea [(ngModel)]="post.content"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label floating> Price </ion-label>
+          <ion-input type="number" [(ngModel)]="post.price"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label floating> Driven distance(km) </ion-label>
+          <ion-input
+            type="number"
+            [(ngModel)]="post.drivenDistance"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label floating> Car Type </ion-label>
+          <ion-select [(ngModel)]="post.carType">
+            <ion-option
+              *ngFor="let carTypesKey of carTypesKeys"
+              [value]="carTypes[carTypesKey]"
+              >{{ carTypesKey }}</ion-option
+            >
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label floating> City </ion-label>
+        <ion-input [(ngModel)]="post.city"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label floating> Manufactured Year </ion-label>
+        <ion-input type="number" [(ngModel)]="post.manufacturedYear"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label > Imported </ion-label>
+        <ion-checkbox [(ngModel)]="post.isImported"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label > Used </ion-label>
+        <ion-checkbox [(ngModel)]="post.isUsed"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+       <ion-item>
+        <ion-label floating>
+          Phone
+        </ion-label>
+        <ion-input type="number" [(ngModel)]="post.phone"></ion-input>
+       </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+            <ion-label>Car Images</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+          <button ion-button icon-only round (click)="takePhoto()"><ion-icon name="camera"></ion-icon></button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+          <button ion-button color="secondary" full (click)="createPost()">
+            Create
+          </button>
+      </ion-col>
+    </ion-row>
   </ion-grid>
+  
+  <ion-slides style="height: 50vh">
+    <ion-slide *ngFor="let image of images">
+      <ion-card>
+        <img [src]="image.src"/>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  <p>
+  <button ion-button round icon-only block (click)="takePhoto()">
+    <ion-icon name="camera"></ion-icon>
+  </button>
+  </p>
+
 </ion-content>

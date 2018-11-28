@@ -15,5 +15,5 @@ export class Post
     price: number;
     title:string;
     transmission: string;
-
+    content: string;
 }
