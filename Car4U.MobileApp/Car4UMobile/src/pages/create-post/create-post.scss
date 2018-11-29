@@ -1,3 +1,28 @@
 page-create-post {
-
+  ion-card {
+    &.avatar {
+      border: 3px ridge orangered;
+    }
+    position: relative;
+    & > p {
+      width: 20%;
+      position: absolute;
+      top: 0;
+      text-align: center;
+      left: 0;
+      border-radius: 0 0 50% 50%;
+      color: white !important;
+      &.title {
+        background-color: orangered;
+      }
+      &.avatar-active {
+        background-color: gray;
+      }
+    }
+  }
+  .remove-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }

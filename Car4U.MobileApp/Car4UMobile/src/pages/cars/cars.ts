@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CarBrand } from '../../models/car-brand';
-import { PostProvider } from '../../providers/post/post-provider';
 import { ListPostPage } from '../list-post/list-post';
+import { PostCategoryProvider } from '../../providers/post-category/post-category-provider';
 
 /**
  * Generated class for the CarsPage page.
@@ -18,12 +18,12 @@ import { ListPostPage } from '../list-post/list-post';
 })
 export class CarsPage {
   carBrands: CarBrand[];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private postProvider: PostProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private postCategoryProvider: PostCategoryProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CarsPage');
-    this.postProvider.getPostCategories().subscribe(data => {
+    this.postCategoryProvider.getPostCategories().subscribe(data => {
       this.carBrands = data;
       console.log("car brands",this.carBrands);
     });

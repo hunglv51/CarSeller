@@ -38,8 +38,16 @@ namespace Car4U.WebAPI.Controllers
             return (await _postService.GetNewestPostViewModel(pageInfo));
         }
         [HttpGet("{id}")]
+        [Route("GetPost")]
         public async Task<PostViewModel> Get(Guid id){
             return (await _postService.GetEntity(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody]PostViewModel postViewModel)
+        {
+            // await _postService.CreateEntity(postViewModel);
+            // return CreatedAtRoute("GetPost", new {id = postViewModel.Id}, postViewModel);
+            return  Ok();
         }
     }
 }

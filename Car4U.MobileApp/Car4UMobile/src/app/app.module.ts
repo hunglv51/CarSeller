@@ -15,6 +15,7 @@ import { ListPostPage } from '../pages/list-post/list-post';
 import { CreatePostPage } from '../pages/create-post/create-post';
 import { FormsModule } from '@angular/forms';
 import {Camera} from "@ionic-native/camera";
+import { PostCategoryProvider } from '../providers/post-category/post-category-provider';
 @NgModule({
   declarations: [
     MyApp,
@@ -48,7 +49,8 @@ import {Camera} from "@ionic-native/camera";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PostProvider
+    PostProvider,
+    PostCategoryProvider
   ]
 })
 export class AppModule {}

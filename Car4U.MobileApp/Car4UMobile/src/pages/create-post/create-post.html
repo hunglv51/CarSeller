@@ -58,6 +58,19 @@
           </ion-select>
         </ion-item>
       </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-label floating> Transmission </ion-label>
+          <ion-select [(ngModel)]="post.transmission">
+            <ion-option
+              *ngFor="let transmissionKey of transmissionKeys"
+              [value]="transmission[transmissionKey]"
+              >{{ transmissionKey }}</ion-option
+            >
+          </ion-select>
+        </ion-item>
+      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
@@ -104,7 +117,27 @@
         </ion-item>
       </ion-col>
       <ion-col>
-          <button ion-button icon-only round (click)="takePhoto()"><ion-icon name="camera"></ion-icon></button>
+        
+        
+        <button ion-button round icon-only block (click)="takePhoto()">
+          <ion-icon name="camera"></ion-icon>
+        </button>
+        
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-slides style="height: 65vh">
+          <ion-slide *ngFor="let image of images">
+            <ion-card [class.avatar]="image.isAvatar">
+              <img [src]="image.src"/>
+              <p *ngIf="image.isAvatar" class="title">Avatar</p>
+              <p *ngIf="!image.isAvatar" class="avatar-active" (click)="setAvatar(image)">Set</p>
+              <button class="remove-btn" ion-button icon-only (click)="removeImage(image)" round color="danger"><ion-icon name="close-circle"></ion-icon></button>
+            </ion-card>
+          </ion-slide>
+          
+        </ion-slides>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -116,17 +149,5 @@
     </ion-row>
   </ion-grid>
   
-  <ion-slides style="height: 50vh">
-    <ion-slide *ngFor="let image of images">
-      <ion-card>
-        <img [src]="image.src"/>
-      </ion-card>
-    </ion-slide>
-  </ion-slides>
-  <p>
-  <button ion-button round icon-only block (click)="takePhoto()">
-    <ion-icon name="camera"></ion-icon>
-  </button>
-  </p>
-  <img [src]="sanitizer.bypassSecurityTrustUrl('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==')" />
+  
 </ion-content>

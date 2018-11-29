@@ -6,5 +6,8 @@ export class CarImage
     id:string;
     type:number;
     uri:string;
-    
+    constructor(public src: string, public isAvatar: boolean)
+    {
+
+    }
 }
