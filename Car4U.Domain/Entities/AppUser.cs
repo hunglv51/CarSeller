@@ -11,10 +11,10 @@ namespace Car4U.Domain.Entities
         {
             
         }
-        public AppUser(string userName,string address, string fullName, string email, string phoneNumber)
+        public AppUser(string userName, string fullName, string email, string phoneNumber)
         {
             Id = Guid.NewGuid();
-            Address = address;
+            
             Email = email;
             FullName = fullName;
             UserName = userName;
@@ -22,7 +22,7 @@ namespace Car4U.Domain.Entities
             
         }
 
-        public string Address { set; get; }
+        
         public string FullName { get; set; }
         public bool IsSalon { get; set; }
         public virtual ICollection<Post> Posts { get; set; }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CarBrand } from '../../models/car-brand';
+import { PostCategory } from '../../models/post-category';
 import { ListPostPage } from '../list-post/list-post';
 import { PostCategoryProvider } from '../../providers/post-category/post-category-provider';
 
@@ -17,7 +17,7 @@ import { PostCategoryProvider } from '../../providers/post-category/post-categor
   templateUrl: 'cars.html',
 })
 export class CarsPage {
-  carBrands: CarBrand[];
+  carBrands: PostCategory[];
   constructor(public navCtrl: NavController, public navParams: NavParams, private postCategoryProvider: PostCategoryProvider) {
   }
 

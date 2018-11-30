@@ -32,7 +32,7 @@
       <ion-col>
         <ion-item>
           <ion-label floating> Price </ion-label>
-          <ion-input type="number" [(ngModel)]="post.price"></ion-input>
+          <ion-input type="number" [(ngModel)]="post.car.price"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
@@ -40,7 +40,7 @@
           <ion-label floating> Driven distance(km) </ion-label>
           <ion-input
             type="number"
-            [(ngModel)]="post.drivenDistance"
+            [(ngModel)]="post.car.drivenDistance"
           ></ion-input>
         </ion-item>
       </ion-col>
@@ -82,7 +82,7 @@
       <ion-col>
         <ion-item>
           <ion-label floating> Manufactured Year </ion-label>
-        <ion-input type="number" [(ngModel)]="post.manufacturedYear"></ion-input>
+        <ion-input type="number" [(ngModel)]="post.car.manufacturedYear"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>

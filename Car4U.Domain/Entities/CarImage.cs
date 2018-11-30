@@ -23,7 +23,7 @@ namespace Car4U.Domain.Entities
         
         public int Width { get; set; }
         public int Height { get; set; }
-        public CarImageTypes Type { get; set; }
+        public bool IsAvatar { get; set; }
 
     }
 }

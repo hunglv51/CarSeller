@@ -12,7 +12,7 @@ namespace Car4U.Application.AutoMapper
         public ViewModelToDomainMappingProfile()
         {
             // CreateMap<string, CarTypes>().ConvertUsing(MappingFunction<CarTypes>);
-            // CreateMap<string, CarImageTypes>().ConvertUsing(MappingFunction<CarImageTypes>);
+            
             // CreateMap<string, DriveTypes>().ConvertUsing(MappingFunction<DriveTypes>);
             // CreateMap<string, PostTypes>().ConvertUsing(MappingFunction<PostTypes>);
             // CreateMap<string, Status>().ConvertUsing(MappingFunction<Status>);

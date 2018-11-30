@@ -1,19 +1,23 @@
-import { CarImage } from "./car-image";
+import { Car } from "./car";
 
 export class Post
 {
-    carType: string;
-    city: string;
+    userName: string;
+    userId: string;
+    title: string ;
+    content: string ;
+    expiredDate: Date;
     createdDate: Date;
-    drivenDistance: number;
-    id: string;
-    images: CarImage[];
+    car: Car;
+    notifications: Notification[];
+    carFamily :string;
+    modifiedDate: Date;
+    category: string;
+    id:string;
+    carType:number;
+    transmission: number;
     isImported: boolean;
-    isUsed:boolean;
-    manufacturedYear: number;
-    phone: string;
-    price: number;
-    title:string;
-    transmission: string;
-    content: string;
+    isUsed :boolean;
+    driveType: string;
+    
 }

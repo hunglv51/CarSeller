@@ -3,15 +3,17 @@ using System;
 using Car4U.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Car4U.Infrastructure.Migrations
 {
     [DbContext(typeof(CarSellerContext))]
-    partial class CarSellerContextModelSnapshot : ModelSnapshot
+    [Migration("20181130022524_add isavatar field")]
+    partial class addisavatarfield
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,6 +27,8 @@ namespace Car4U.Infrastructure.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("Address");
 
                     b.Property<string>("ConcurrencyStamp");
 
@@ -156,8 +160,6 @@ namespace Car4U.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("City");
 
                     b.Property<string>("Content")
                         .HasMaxLength(1000);

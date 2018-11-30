@@ -6,6 +6,7 @@ import { Camera, CameraOptions } from "@ionic-native/camera";
 import { CarTransmission } from "../../constants/car-transmission";
 import { CarImage } from "../../models/car-image";
 import { PostProvider } from "../../providers/post/post-provider";
+import { Car } from "../../models/car";
 /**
  * Generated class for the CreatePostPage page.
  *
@@ -39,7 +40,8 @@ export class CreatePostPage {
   ) 
   {
     this.post.createdDate = new Date();
-    this.post.images = this.images;
+    this.post.car = new Car();
+    this.post.car.images = this.images;
   }
   
   ionViewDidLoad() {

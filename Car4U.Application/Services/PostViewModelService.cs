@@ -32,7 +32,7 @@ namespace Car4U.Application.Services
             var posts = _repository.List(specification)
                         .Select(x => new ListPostItem{
                             CarType = x.Category.CarType.ToString(),
-                            City = x.User.Address,
+                            City = x.City,
                             CreatedDate = x.CreatedDate,
                             DrivenDistance = x.Car.DrivenDistance,
                             Id = x.Id.ToString(),
@@ -65,7 +65,7 @@ namespace Car4U.Application.Services
                             .Skip(pageInfo.PageSkip).Take(pageInfo.PageMargin)
                             .Select(x => new ListPostItem{
                                 CarType = x.Category.CarType.ToString(),
-                                City = x.User.Address,
+                                City = x.City,
                                 CreatedDate = x.CreatedDate,
                                 DrivenDistance = x.Car.DrivenDistance,
                                 Id = x.Id.ToString(),

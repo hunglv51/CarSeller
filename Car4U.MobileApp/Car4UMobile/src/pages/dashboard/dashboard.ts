@@ -39,6 +39,8 @@ export class DashboardPage {
   getPosts(pageIndex:number)
   {
     this.postService.getPosts(pageIndex).subscribe((data) => {
+      console.log(data);
+      
       this.listPost = data["items"];
       console.log(this.listPost);
       

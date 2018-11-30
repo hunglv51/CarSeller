@@ -10,7 +10,7 @@ namespace Car4U.Application.ViewModels
         [RegularExpression(@"\w")]
         public string UserName { get; set; }
         public string FullName { get; set; }
-        public string Address { get; set; }
+        
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [DataType(DataType.PhoneNumber)]

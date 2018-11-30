@@ -36,7 +36,7 @@ namespace Car4U.Domain.Entities
         public virtual Car Car { get; set; }
         [ForeignKey("PostId")]
         public virtual ICollection<Notification> Notifications { get; set; }
-      
+        public string City { set; get; }
         [DataType(DataType.DateTime)]
         public DateTime ModifiedDate { get; set; }
         [ForeignKey("PostCategoryId")]
